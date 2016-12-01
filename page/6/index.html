@@ -304,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/帮你分析一下神经病人的具体定义/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/apache-poi-使用中文说明书/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -329,8 +329,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/01/帮你分析一下神经病人的具体定义/" itemprop="url">
-                  帮你分析一下神经病人的具体定义
+                <a class="post-title-link" href="/2016/12/01/apache-poi-使用中文说明书/" itemprop="url">
+                  apache poi 使用中文说明书
                 </a>
               
             
@@ -344,7 +344,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:46:12+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:55:43+08:00">
                 2016-12-01
               </time>
             
@@ -363,8 +363,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -378,8 +378,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/帮你分析一下神经病人的具体定义/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/帮你分析一下神经病人的具体定义/" itemprop="commentCount"></span>
+                <a href="/2016/12/01/apache-poi-使用中文说明书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/apache-poi-使用中文说明书/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -406,30 +406,72 @@
 
       
         
-          
-            <p>以下所有内容均为白日呓语:<br>想太多我确定我是一个膨胀自负，明知道自己不行还会硬撑面子的人。这种人在文学作品中总是逞一时风光，到后面死的很惨，惨到让观者大呼过瘾。另w，这种人有一种自带的被动叫做「想太多」。这种 debuff 经常让我不知不觉身处尴尬之中，事情太多、太尴尬，每每想到自己都会脸红。<br>我挺喜欢小剥皮。<br>想了一下，不能形容为「欢乐要建立在别人的痛苦之上」，毕竟看见某些惨状我只会恶心而不是欢乐。</p>
-<pre><code>在同一件事上，我与他人付出了同样的努力，然而别人要比我差的时候，我会感到开心。
-在同一件事上，我比他人付出了更多，别人比我差的时候，我也会开心。
-若是不能比，或者我比他人差，那么就没得谈了，怎么开心得起来。
-</code></pre><p>小剥皮不像是乔大帝，乔大帝不努力。小剥皮会用尽手段以达到自己的目的。</p>
-<p>『怠惰啊！』</p>
-<p>这种欢乐来自于膨胀自负带来的优越感。优越感也带来一点负罪感，可是冥冥中有个声音告诉我我不该这么做。<br>我五年内都不会有女朋友</p>
-<pre><code>也不会有男朋友。
-</code></pre><p>不是说搬出去住么，又是一周了。与其说没有找到合适的房源，不如说是自己没有找。</p>
-<pre><code>我爸问我搬出去是不是因为谈恋爱了。
-我说不是。
-然后又问我不去外地实习是不是因为女友在成都。
-我说不是。
-我说，我五年内都不会有女朋友，要是有的话我把名字倒着写一个月。
-</code></pre><p>自己渣就别去祸害别人了。</p>
-<p>喝醉了就别到处说出洋相了。</p>
-<p>失恋了就别找异性倾诉，万一别人不喜欢你呢？</p>
-<p>你这是媚俗，是斯德哥尔摩综合征，别人想看就看不想看就不看，你还非要粘着别人不放。<br>拜托，大家都很忙的。</p>
-<p>以上所有内容均为白日呓语。<br>下面才是由衷的：</p>
-<p>想看的看，不想看的就别看</p>
-<p>喵~ 就是这样</p>
+          <p>XSSF导出 excel<br>1.导入jar包</p>
+<p>2.拷贝工具类ExcelExportSXXSSF</p>
+<p>XSSF操作03以上版本（07版本）excel，扩展名.xlsx，工作表行数没有限制<br>3.配置虚拟目录<br>在host标签中配置如下：</p>
+<p><Context path="/vir/" docBase="d:/upload/" reloadable="true" /><br>这样在浏览上输入：<br><a href="http://ip地址：端口号/vir/">http://ip地址：端口号/vir/</a><br>就可以访问d:/upload/目录下的文件了！servlet中可以使用如下代码得到webpath<br>/**            导出文件存放物理路径</p>
+<pre><code> * @param fileWebPath
+ *            导出文件web下载路径
+ * @param filePrefix
+ *            导出文件名的前缀          
+ * @param flushRows
+ *            存放在内存的数据量
+ * @param fieldNames
+ *            导出文件列标题
+ * @param fieldCodes
+ *               导出数据对象的字段名称     
+ * @param flushRows*/
+//导出文件存放的路径，并且是虚拟目录指向的路径
+String filePath = &quot;d:/upload/&quot;;
+//导出文件的前缀
+String filePrefix=&quot;studentinfo&quot;;
+//-1表示关闭自动刷新，手动控制写磁盘的时机，其它数据表示多少数据在内存保存，超过的则写入磁盘
+int flushRows=100;
 
-          
+//定义导出数据的title
+List&lt;String&gt; fieldNames=new ArrayList&lt;String&gt;();
+fieldNames.add(&quot;性别&quot;);
+fieldNames.add(&quot;年龄&quot;);
+fieldNames.add(&quot;姓名&quot;);
+fieldNames.add(&quot;爱好&quot;);
+
+//告诉导出类数据list中对象的属性，让ExcelExportSXXSSF通过反射获取对象的值
+List&lt;String&gt; fieldCodes=new ArrayList&lt;String&gt;();
+fieldCodes.add(&quot;gender&quot;);//药品流水号
+fieldCodes.add(&quot;age&quot;);//通用名
+fieldCodes.add(&quot;name&quot;);//价格
+fieldCodes.add(&quot;hobbies&quot;);
+
+
+
+//注意：fieldCodes和fieldNames个数必须相同且属性和title顺序一一对应，这样title和内容才一一对应
+
+
+//开始导出，执行一些workbook及sheet等对象的初始创建
+ExcelExportSXXSSF excelExportSXXSSF = ExcelExportSXXSSF.start(filePath, &quot;/vir&quot;, filePrefix, fieldNames, fieldCodes, flushRows);
+
+//准备导出的数据，将数据存入list，且list中对象的字段名称必须是刚才传入ExcelExportSXXSSF的名称
+List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+
+list.add(new Student(&quot;男&quot;, 23, &quot;张三&quot;, &quot;乒乓球,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 24, &quot;李四&quot;, &quot;篮球,羽毛球&quot;));
+list.add(new Student(&quot;女&quot;, 25, &quot;小红&quot;, &quot;高尔夫,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 23, &quot;小刘&quot;, &quot;乒乓球,羽毛球&quot;));
+
+//执行导出
+excelExportSXXSSF.writeDatasByObject(list);
+//输出文件，返回下载文件的http地址
+String webpath = excelExportSXXSSF.exportFile();
+
+System.out.println(webpath);
+</code></pre>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/01/apache-poi-使用中文说明书/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -461,7 +503,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -502,7 +544,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -519,7 +561,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

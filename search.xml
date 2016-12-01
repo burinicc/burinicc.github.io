@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[复杂的sql]]></title>
+      <url>%2F2016%2F12%2F01%2F%E5%A4%8D%E6%9D%82%E7%9A%84sql%2F</url>
+      <content type="text"><![CDATA[做统计分析时，统计每个地区医院的采购金额 select areainfo.areaname,nvl(business.cgje,0)cgje from (select areaname from bss_sys_area where arealevel='2')areainfo left join( select sum(nvl(cgje,0))cgje, parentid, (select areaname from bss_sys_area where business.parentid=areaid)areaname from ( select dq,cgje, (select parentid from bss_sys_area where dq=areaid)parentid from ( select useryyid, (select dq from useryy where useryyid=useryy.id)dq, cgje from ( select useryy.id useryyid, useryy.mc useryymc, yycgd.bm yycgdbm, yycgd.id yycgdid, usergys.id usergysid, usergys.mc usergysmc, yycgdmx.ypxxid, ypxx.id, ypxx.bm, ypxx.mc, ypxx.jx, ypxx.gg, ypxx.zhxs, ypxx.scqymc, ypxx.spmc, ypxx.jyzt, (select info from dictinfo where ypxx.jyzt = dictcode and typecode = '003') jyztmc, (select info from dictinfo where typecode = '011' and dictcode = yycgdmx.cgzt) cgztmc, yycgdmx.cgl, yycgdmx.cgje, yycgdmx.rkl, yycgdmx.rkje, yycgdmx.thl, yycgdmx.thje, yycgdmx.jsl, yycgdmx.jsje from yybusiness2016 yycgdmx, yycgd2016 yycgd, useryy, usergys, ypxx where yycgdmx.yycgdid = yycgd.id and yycgd.useryyid = useryy.id and yycgdmx.usergysid = usergys.id and yycgdmx.ypxxid = ypxx.id)business)business)business group by parentid)business on business.areaname=areainfo.areaname 下面的sql让我对外连接和内连接以及它们使用的时机有了一个更清楚认识，表的关联需要注意的事项就是一定要保证我们主表在所关联的表只能查到一条记录，这个字段要么不是外键要么就是多个字段构成关联表的唯一约束 select yycgdmx.*,yycgdrk.rkl, yycgdrk.rkje from( select useryy.mc useryymc, yycgd.bm yycgdbm, yycgdmx.yycgdid, yycgdmx.ypxxid, usergys.mc usergysmc, yycgdmx.cgl, yycgdmx.cgje, ypxx.* from yycgdmx2016 yycgdmx, yycgd2016 yycgd, useryy, usergys, ypxx where yycgdmx.yycgdid=yycgd.id and yycgd.useryyid=useryy.id and yycgdmx.ypxxid=ypxx.id and yycgdmx.usergysid=usergys.id )yycgdmx （注释)外连接查询入库信息表 left join yycgdrk2016 yycgdrk on yycgdmx.yycgdid=yycgdrk.yycgdid and yycgdmx.ypxxid=yycgdrk.ypxxid 总结：在数据库设计时，为了保证数据的完整性，不能把入库量、结算量、退货量、结算金额等重要的业务数据放在yycgdmx中，因为这些信息在创建明细表中根本就不存在，然而这些数据对应的字段不能为空，所以就产生了矛盾。故还应该设计另外一张表来存放这些业务信息yybusiness，考虑到表的数据量也会很大，就写了一个创建表的储存过程，由系统的定时任务来调用。yybusiness中的数据插入时机是监督单位审核后，因为有业务逻辑的判断，使用触发器来插入数据比较复杂，相比较在业务层做这个工作比较方便。当更新yybusiness中的信息的时候，这时触发器会帮助把数据放到自己业务所对应的表中，比如结算流程，对应的yyjsd表。这里使用触发器还帮着实现了数据同步，另外，这样做实际上就是数据聚合。前段时间，一个同学问我数据聚合，当时把我问的一头雾水，现在想想还觉的脸红。其实，它就是为了我们方便操作数据，这里的操作主要是查询，你想想看，数据结构中，数组为什么比链表好查。其实是一个道理。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[向maven私服中导入jar包]]></title>
+      <url>%2F2016%2F12%2F01%2F%E5%90%91maven%E7%A7%81%E6%9C%8D%E4%B8%AD%E5%AF%BC%E5%85%A5jar%E5%8C%85%2F</url>
+      <content type="text"><![CDATA[对于官网没有的jar包，maven向本地仓库导入jar包用如下命令Java代码mvn install:install-file-DgroupId=包名-DartifactId=项目名-Dversion=版本号-Dpackaging=jar-Dfile=jar文件所在路径以pinyin4j-2.5.0为例：1、将pinyin4j-2.5.0.jar文件放在“D:\”目录下（该目录任意）2、执行命令：mvn install:install-file -Dfile=D:\pinyin4j-2.5.0.jar -DgroupId=net.sourceforge.pinyin4j -DartifactId=pinyin4j -Dversion=2.5.0 -Dpackaging=jar -DgeneratePom=true -DcreateChecksum=true这样maven向本地仓库导入 pinyin4j-2.5.0.jar 包就成功了。3.pom.xml文件配置：Xml代码 &ltdependency&gt &ltgroupId&gtnet.sourceforge&lt/groupId&gt &ltartifactId&gtpinyin4j&lt/artifactId&gt &ltversion&gt2.5.0&lt/version&gt &lt/dependency&gt]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[爱情]]></title>
       <url>%2F2016%2F12%2F01%2F%E6%84%9F%E6%83%85%E6%80%9D%E8%80%83%2F</url>
       <content type="text"><![CDATA[生活并不可怕，可怕的是迷惘]]></content>
