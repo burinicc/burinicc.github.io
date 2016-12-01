@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>个人博客</title>
+  <title>Bug</title>
   <subtitle>好好学习，天天向上</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://burinicc.cn/"/>
-  <updated>2016-12-01T03:35:16.877Z</updated>
+  <updated>2016-12-01T10:55:17.526Z</updated>
   <id>http://burinicc.cn/</id>
   
   <author>
@@ -16,11 +16,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>爱情</title>
+    <link href="http://burinicc.cn/2016/12/01/%E6%84%9F%E6%83%85%E6%80%9D%E8%80%83/"/>
+    <id>http://burinicc.cn/2016/12/01/感情思考/</id>
+    <published>2016-12-01T08:24:51.000Z</published>
+    <updated>2016-12-01T10:55:17.526Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>生活并不可怕，可怕的是迷惘
+</code></pre><img src="/images/avatar.png" width="480" height="720">
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;生活并不可怕，可怕的是迷惘
+&lt;/code&gt;&lt;/pre&gt;&lt;img src=&quot;/images/avatar.png&quot; width=&quot;480&quot; height=&quot;720&quot;&gt;
+
+    
+    </summary>
+    
+      <category term="生活" scheme="http://burinicc.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感情" scheme="http://burinicc.cn/tags/%E6%84%9F%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>sql注入问题详解</title>
     <link href="http://burinicc.cn/2016/12/01/sql%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/"/>
     <id>http://burinicc.cn/2016/12/01/sql注入问题详解/</id>
     <published>2016-12-01T03:23:39.000Z</published>
-    <updated>2016-12-01T03:35:16.877Z</updated>
+    <updated>2016-12-01T10:59:28.024Z</updated>
     
     <content type="html"><![CDATA[<p>SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。<br>SQL注入基础<br>1.试探 1=1，1=2</p>
 <pre><code>http://example.asp?id=49
@@ -116,6 +142,10 @@ http://example.asp?id=49 and 1=2
     
     </summary>
     
+      <category term="技术" scheme="http://burinicc.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="SQL注入" scheme="http://burinicc.cn/tags/SQL%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
@@ -124,7 +154,7 @@ http://example.asp?id=49 and 1=2
     <link href="http://burinicc.cn/2016/12/01/tomcat-%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E4%B8%89%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"/>
     <id>http://burinicc.cn/2016/12/01/tomcat-内存溢出三种解决方式/</id>
     <published>2016-12-01T03:04:33.000Z</published>
-    <updated>2016-12-01T03:34:42.517Z</updated>
+    <updated>2016-12-01T09:58:05.765Z</updated>
     
     <content type="html"><![CDATA[<p>Tomcat内存溢出的原因<br>　　在生产环境中tomcat内存设置不好很容易出现内存溢出。造成内存溢出是不一样的，当然处理方式也不一样。<br>　　这里根据平时遇到的情况和相关资料进行一个总结。常见的一般会有下面三种情况：<br>　　1.OutOfMemoryError： Java heap space<br>　　2.OutOfMemoryError： PermGen space<br>　　3.OutOfMemoryError： unable to create new native thread.<br>　　Tomcat内存溢出解决方案<br>　　对于前两种情况，在应用本身没有内存泄露的情况下可以用设置tomcat jvm参数来解决。（-Xms -Xmx -XX：PermSize -XX：MaxPermSize）<br>　　最后一种可能需要调整操作系统和tomcat jvm参数同时调整才能达到目的。<br>　　第一种：是堆溢出。<br>　　原因分析：<br>JVM堆的设置是指java程序运行过程中JVM可以调配使用的内存空间的设置.JVM在启动的时候会自动设置Heap size的值，其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)是物理内存的1/4。可以利用JVM提供的-Xmn -Xms -Xmx等选项可进行设置。Heap size 的大小是Young Generation 和Tenured Generaion 之和。<br>在JVM中如果98％的时间是用于GC且可用的Heap size 不足2％的时候将抛出此异常信息。<br>Heap Size 最大不要超过可用物理内存的80％，一般的要将-Xms和-Xmx选项设置为相同，而-Xmn为1/4的-Xmx值。<br>　　没有内存泄露的情况下，调整-Xms -Xmx参数可以解决。<br>　　-Xms：初始堆大小<br>　　-Xmx：最大堆大小<br>　　但堆的大小受下面三方面影响：<br>　　1.相关操作系统的数据模型（32-bt还是64-bit）限制；（32位系统下，一般限制在1.5G~2G；我在2003 server 系统下（物理内存：4G和6G，jdk：1.6）测试 1612M，64位操作系统对内存无限制。）<br>　　2.系统的可用虚拟内存限制；<br>　　3.系统的可用物理内存限制。<br>　　堆的大小可以使用 java -Xmx<em>*</em>M version 命令来测试。支持的话会出现jdk的版本号，不支持会报错。<br>　　-Xms -Xmx一般配置成一样比较好比如set JAVA_OPTS= -Xms1024m -Xmx1024m<br>其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)是物理内存的1/4。可以利用JVM提供的-Xmn -Xms -Xmx等选项可<br>进行设置<br>实例，以下给出1G内存环境下java jvm 的参数设置参考：<br>JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true “<br>JAVA_OPTS=”-server -Xms768m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=256m -XX:<br>NewSize=192m -XX:MaxNewSize=384m”<br>CATALINA_OPTS=”-server -Xms768m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=256m<br>-XX:NewSize=192m -XX:MaxNewSize=384m”<br>服务器为1G内存：JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true “<br>服务器为64位、2G内存: JAVA_OPTS=’-server -Xms1024m -Xmx1536m -XX:PermSize=128M -XX:MaxNewSize=256m -XX:MaxPermSize=256m’<br>——————-解决方案1：—————————–<br>前提：是执行startup.bat启动tomcat的方式<br>Linux服务器：<br>在/usr/local/apache-tomcat-5.5.23/bin 目录下的catalina.sh<br>添加：JAVA_OPTS=’-Xms512m -Xmx1024m’<br>或者 JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:MaxNewSize=256m”<br>或者 CATALINA_OPTS=”-server -Xms256m -Xmx300m”<br>Windows服务器：<br>在catalina.bat最前面加入<br>set JAVA_OPTS=-Xms128m -Xmx350m<br>或者set CATALINA_OPTS=-Xmx300M -Xms256M<br>（区别是一个直接设置jvm内存，另一个设置tomcat内存，CATALINA_OPTS似乎可以与JAVA_OPTS不加区别的使用）<br>基本参数说明<br>-client，-server<br>这两个参数用于设置虚拟机使用何种运行模式，一定要作为第一个参数，client模式启动比较快，但运行时性能和内存管理效率不如server模式，通常用于客户端应用程序。相反，server模式启动比client慢，但可获得更高的运行性能。<br>在windows上，缺省的虚拟机类型为client模式，如果要使用server模式，就需要在启动虚拟机时加-server参数，以获得更高性能，对服务器端应用，推荐采用server模式，尤其是多个CPU的系统。在Linux，Solaris上缺省采用server模式。<br>此外，在多cup下，建议用server模式<br>-Xms<size><br>设置虚拟机可用内存堆的初始大小，缺省单位为字节，该大小为1024的整数倍并且要大于1MB，可用k(K)或m(M)为单位来设置较大的内存数。初始堆大小为2MB。加“m”说明是MB，否则就是KB了。<br>例如：-Xms6400K，-Xms256M<br>-Xmx<size><br>设置虚拟机的最大可用大小，缺省单位为字节。该值必须为1024整数倍，并且要大于2MB。可用k(K)或m(M)为单位来设置较大的内存数。缺省堆最大值为64MB。<br>例如：-Xmx81920K，-Xmx80M<br>当应用程序申请了大内存运行时虚拟机抛出java.lang.OutOfMemoryError: Java heap space错误，就需要使用-Xmx设置较大的可用内存堆。<br>PermSize/MaxPermSize：定义Perm段的尺寸，即永久保存区域的大小，PermSize为JVM启动时初始化Perm的内存大小；MaxPermSize为最大可占用的Perm内存大小。在用户生产环境上一般将这两个值设为相同，以减少运行期间系统在内存申请上所花的开销。<br>如果用startup.bat启动tomcat,OK设置生效.够成功的分配200M内存.<br>——————-解决方案2：————————<br>前提：是执行startup.bat启动tomcat的方式<br>手动设置Heap size<br>Windows服务器：<br>修改TOMCAT_HOME/bin/catalina.bat，在“echo “Using CATALINA_BASE: $CATALINA_BASE””上面加入以下行：<br>Java代码<br>set JAVA_OPTS=%JAVA_OPTS% -server -Xms800m -Xmx800m -XX:MaxNewSize=256m<br><a id="more"></a><br>注：JAVA_OPTS是保留先前设置。<br>Linux服务器：<br>修改TOMCAT_HOME/bin/catalina.sh<br>在“echo “Using CATALINA_BASE: $CATALINA_BASE””上面加入以下行：<br>JAVA_OPTS=”$JAVA_OPTS -server -Xms800m -Xmx800m -XX:MaxNewSize=256m”<br>注：$JAVA_OPTS是保留先前设置。<br>——————-解决方案3：—————————–<br>前提：是执行windows的系统服务启动tomcat的方式<br>但是如果不是执行startup.bat启动tomcat而是利用windows的系统服务启动tomcat服务,上面的设置就不生效了,<br>就是说set JAVA_OPTS=-Xms128m -Xmx350m 没起作用.上面分配200M内存就OOM了..<br>windows服务执行的是bin\tomcat.exe.他读取注册表中的值,而不是catalina.bat的设置.<br>解决办法:<br>修改注册表HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Tomcat Service Manager\Tomcat5\Parameters\JavaOptions<br>原值为<br>-Dcatalina.home=”C:\ApacheGroup\Tomcat 5.0”<br>-Djava.endorsed.dirs=”C:\ApacheGroup\Tomcat 5.0\common\endorsed”<br>-Xrs<br>加入 -Xms300m -Xmx350m<br>重起tomcat服务,设置生效<br>——————-解决方案4：—————————–<br>前提：是执行windows的系统服务启动tomcat的方式<br>在安装tomcat时若有勾选”NT Service(NT/2000/XP only)”<br>则安装完成后在安装目录的”bin”目录里会有一个tomcat.exe的档案<br>先把tomcat的服务停掉<br>在命令列模式下（运行里输入CMD）<br>将目录切换到tomcat的bin目录<br>用下面的命令把服务移除</size></size></p>
 <p>tomcat -uninstall “Apache Tomcat 4.1”</p>
@@ -140,6 +170,10 @@ http://example.asp?id=49 and 1=2
     
     </summary>
     
+      <category term="技术" scheme="http://burinicc.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="tomcat" scheme="http://burinicc.cn/tags/tomcat/"/>
     
   </entry>
   
@@ -148,7 +182,7 @@ http://example.asp?id=49 and 1=2
     <link href="http://burinicc.cn/2016/12/01/apache-poi-%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E%E4%B9%A6/"/>
     <id>http://burinicc.cn/2016/12/01/apache-poi-使用中文说明书/</id>
     <published>2016-12-01T02:55:43.000Z</published>
-    <updated>2016-12-01T03:35:02.800Z</updated>
+    <updated>2016-12-01T09:58:09.568Z</updated>
     
     <content type="html"><![CDATA[<p>XSSF导出 excel<br>1.导入jar包</p>
 <p>2.拷贝工具类ExcelExportSXXSSF</p>
@@ -339,6 +373,10 @@ System.out.println(webpath);
     
     </summary>
     
+      <category term="技术" scheme="http://burinicc.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Apache poi" scheme="http://burinicc.cn/tags/Apache-poi/"/>
     
   </entry>
   
@@ -347,7 +385,7 @@ System.out.println(webpath);
     <link href="http://burinicc.cn/2016/12/01/oracle-Express-Edition%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/"/>
     <id>http://burinicc.cn/2016/12/01/oracle-Express-Edition安装中文说明/</id>
     <published>2016-12-01T02:54:16.000Z</published>
-    <updated>2016-12-01T03:08:39.983Z</updated>
+    <updated>2016-12-01T09:57:57.918Z</updated>
     
     <content type="html"><![CDATA[<p>P1：解压移动硬盘下的OracleXE112_Win64.zip，运行setup.exe，安装oracle  express 版本<br>P2： 解压移动硬盘下的32位的Instantclient-basic-nt-11.2.0.2.0.zip到E盘<br>P3：PL/SQL Developer使用InstantClient连接Oracle服务器，将C:\oraclexe\app\oracle\product\11.2.0\server\network\ADMIN下的tnsnames.ora拷贝到Instantclient-basic-nt-11.2.0.2.0.zip解压目录下；<br>P4. 打开PLSQL Developer，点击取消按钮，在首先项中设置Oracle_Home和OCI Library：<br>ToolsPreferencesOracleConnection：<br>Oracle_Home：Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>OCI Library：Instantclient-basic-nt-11.2.0.2.0.zip解压目录\oci.dll<br>P5 新建plsql.bat文件，文件内容如下：<br>@echo off<br>set path= Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>set ORACLE_HOME= Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>set TNS_ADMIN= Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>set NLS_LANG=AMERICAN_AMERICA.ZHS16GBK//可以解决中文乱码问题<br>start plsqldev.exe</p>
 <p>P5 将新建的plsql.bat文件copy在PLSQL Developer目录下，替换PLSQL Developer的桌面创建方式，用新建的plsql.bat文件启动PLSQL Developer;</p>
@@ -362,6 +400,10 @@ System.out.println(webpath);
     
     </summary>
     
+      <category term="技术" scheme="http://burinicc.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="oracle安装" scheme="http://burinicc.cn/tags/oracle%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -370,7 +412,7 @@ System.out.println(webpath);
     <link href="http://burinicc.cn/2016/12/01/%E5%B8%AE%E4%BD%A0%E5%88%86%E6%9E%90%E4%B8%80%E4%B8%8B%E7%A5%9E%E7%BB%8F%E7%97%85%E4%BA%BA%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9A%E4%B9%89/"/>
     <id>http://burinicc.cn/2016/12/01/帮你分析一下神经病人的具体定义/</id>
     <published>2016-12-01T02:46:12.000Z</published>
-    <updated>2016-12-01T04:15:48.383Z</updated>
+    <updated>2016-12-01T09:58:54.074Z</updated>
     
     <content type="html"><![CDATA[<p>以下所有内容均为白日呓语:<br>想太多我确定我是一个膨胀自负，明知道自己不行还会硬撑面子的人。这种人在文学作品中总是逞一时风光，到后面死的很惨，惨到让观者大呼过瘾。另w，这种人有一种自带的被动叫做「想太多」。这种 debuff 经常让我不知不觉身处尴尬之中，事情太多、太尴尬，每每想到自己都会脸红。<br>我挺喜欢小剥皮。<br>想了一下，不能形容为「欢乐要建立在别人的痛苦之上」，毕竟看见某些惨状我只会恶心而不是欢乐。</p>
 <pre><code>在同一件事上，我与他人付出了同样的努力，然而别人要比我差的时候，我会感到开心。
@@ -401,8 +443,12 @@ System.out.println(webpath);
     
     </summary>
     
+      <category term="生活" scheme="http://burinicc.cn/categories/%E7%94%9F%E6%B4%BB/"/>
     
-      <category term="-test" scheme="http://burinicc.cn/tags/test/"/>
+    
+      <category term="感情" scheme="http://burinicc.cn/tags/%E6%84%9F%E6%83%85/"/>
+    
+      <category term="思考" scheme="http://burinicc.cn/tags/%E6%80%9D%E8%80%83/"/>
     
   </entry>
   
@@ -411,7 +457,7 @@ System.out.println(webpath);
     <link href="http://burinicc.cn/2016/12/01/jfreechar%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B9%A6/"/>
     <id>http://burinicc.cn/2016/12/01/jfreechar使用说明书/</id>
     <published>2016-12-01T02:17:53.000Z</published>
-    <updated>2016-12-01T03:18:25.496Z</updated>
+    <updated>2016-12-01T09:58:13.183Z</updated>
     
     <content type="html"><![CDATA[<p>思路：<br>在action代码中，生成图形，把图片的名称暂存到session中，在页面中通过img展示生成的图形，通过jfreechart的servlet输出图形<br>解决方案：<br>一、导入jar包：<br>jcommns.jar<br>jfreechart.jar<br>二、配置jfreechart的servlet<br>    &lt;!-jfreechart –&gt;<br>    org.jfree.chart.servlet.DisplayChart<br>三、Action中配置:<br>第一步：准备dataset<br>DefaultCategoryDataset dataset=new DefaultCategoryDataset();<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgje(), “采购金额”, yycgdmxCustom.getAreaname());<br>        }<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgl(), “采购量”, yycgdmxCustom.getAreaname());<br>        }<br>解决中文乱码：<br>//创建主题样式<br>           StandardChartTheme standardChartTheme=new StandardChartTheme(“CN”);<br>           //设置标题字体<br>           standardChartTheme.setExtraLargeFont(new Font(“隶书”,Font.BOLD,20));<br>           //设置图例的字体<br>           standardChartTheme.setRegularFont(new Font(“宋书”,Font.PLAIN,15));<br>           //设置轴向的字体<br>           standardChartTheme.setLargeFont(new Font(“宋书”,Font.PLAIN,15));<br>           //应用主题样式<br>           ChartFactory.setChartTheme(standardChartTheme);<br>第二步：创建chart<br>柱状图：<br>JFreeChart chart=ChartFactory.createBarChart3D(“药品采购金额汇总”,//图形名称<br>                “”,//分类名称，为横坐标名称<br>                “采购金额”,//值名称，为纵坐标名称<br>                dataset,//数据集合<br>                PlotOrientation.VERTICAL,//垂直显示<br>                true,//是否显示图例<br>                false,//是否使用工具提示<br>                false);//是否使用url<br>        //在柱上显示数值<br>        CategoryPlot plot=chart.getCategoryPlot();<br>        BarRenderer3D renderer=new BarRenderer3D();<br>        //设置柱的颜色<br>        renderer.setSeriesPaint(0, Color.decode(“#ffffff”));<br>        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());<br>        renderer.setBaseItemLabelsVisible(true);<br>        //默认的数字显示在柱中，通过下面两句可以调整数字的显示位置<br>        renderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_LEFT));<br>        renderer.setItemLabelAnchorOffset(10D);<br>        plot.setRenderer(renderer);<br>第三步：将jfreechart得到的文件名传到页面<br>//将chart注入到jfreechart的工具中得到filename，把图片保存在session中，并把filename传到页面。<br>        String jfreechart_filename=<br>        ServletUtilities.saveChartAsPNG(chart,900,500,null,session);        model.addAttribute(“jfreechart_filename”,jfreechart_filename);<br>四、配置jsp页面<br>&lt;!—jfreechart图形–&gt;<br>在jsp页面添加img标签 属性src=”${baseurl}/jfreechart?filename=${jfreechart_filename}”</p>
 ]]></content>
@@ -422,6 +468,10 @@ System.out.println(webpath);
     
     </summary>
     
+      <category term="技术" scheme="http://burinicc.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="jfreechart" scheme="http://burinicc.cn/tags/jfreechart/"/>
     
   </entry>
   
