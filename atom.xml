@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://burinicc.cn/"/>
-  <updated>2016-12-01T13:47:36.655Z</updated>
+  <updated>2016-12-01T14:15:49.322Z</updated>
   <id>http://burinicc.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://burinicc.cn/2016/12/01/%E5%A4%8D%E6%9D%82%E7%9A%84sql/"/>
     <id>http://burinicc.cn/2016/12/01/复杂的sql/</id>
     <published>2016-12-01T12:39:19.000Z</published>
-    <updated>2016-12-01T13:47:36.655Z</updated>
+    <updated>2016-12-01T14:15:49.322Z</updated>
     
     <content type="html"><![CDATA[<p>做统计分析时，统计每个地区医院的采购金额</p>
 <pre>
@@ -160,17 +160,16 @@ select areainfo.areaname,nvl(business.cgje,0)cgje from
     <link href="http://burinicc.cn/2016/12/01/%E6%84%9F%E6%83%85%E6%80%9D%E8%80%83/"/>
     <id>http://burinicc.cn/2016/12/01/感情思考/</id>
     <published>2016-12-01T08:24:51.000Z</published>
-    <updated>2016-12-01T10:55:17.526Z</updated>
+    <updated>2016-12-01T14:14:13.200Z</updated>
     
-    <content type="html"><![CDATA[<pre><code>生活并不可怕，可怕的是迷惘
-</code></pre><img src="/images/avatar.png" width="480" height="720">
+    <content type="html"><![CDATA[<img src="/images/avatar.png" width="380" height="438">
+<p>  我想找一个时间问问莺歌可不可以再等我两年，我保证给她一个安全的未来，可是我害怕，我不是害怕自己做不到，而是害怕别人质疑的眼神或者是离去的背影，现在相比较来说很好。感情现在是小事情，在去广州之前我是个男孩，现在我是一个男人，因为我懂得了思考和行动，目前还没有一个男人应该有的资产，爱情也是奢饰品。消费不起，现在把技术学扎实，等把人生弄明白了，就找一个人结婚就算了。漂不漂亮无所谓，是不是她也好，我再给自己三年的时间！</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;pre&gt;&lt;code&gt;生活并不可怕，可怕的是迷惘
-&lt;/code&gt;&lt;/pre&gt;&lt;img src=&quot;/images/avatar.png&quot; width=&quot;480&quot; height=&quot;720&quot;&gt;
-
+      &lt;img src=&quot;/images/avatar.png&quot; width=&quot;380&quot; height=&quot;438&quot;&gt;
+&lt;p&gt;  我想找一个时间问问莺歌可不可以再等我两年，我保证给她一个安全的未来，可是我害怕，我不是害怕自己做不到，而是害怕别人质疑的眼神或者是离去的背影，现在相比较来说很
     
     </summary>
     
