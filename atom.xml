@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://burinicc.cn/"/>
-  <updated>2016-12-01T14:15:49.322Z</updated>
+  <updated>2016-12-02T02:04:30.033Z</updated>
   <id>http://burinicc.cn/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最好看的电影</title>
+    <link href="http://burinicc.cn/2016/12/02/%E6%9C%80%E5%A5%BD%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/"/>
+    <id>http://burinicc.cn/2016/12/02/最好看的电影/</id>
+    <published>2016-12-02T01:28:55.000Z</published>
+    <updated>2016-12-02T02:04:30.033Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is a time-honored tradition for some people to catch up with sth blindly,even some easy things ,like movies.The following  is  a piece of advice for them,and i hope to help them.<br>No.1:《Every cloud has a silver lining》</p>
+<p>Evalution:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOU will  be attracted deeply by Tiffany and Pat Solitano according to the movie!This is not a joke,as long as you really understand the idea and  the mood  what movie want to tell;</p>
+<p>No.2:《苔藓》</p>
+<p>Evalution:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The movie tells us how to live with the powerful persons.Don’t feel sympathy for yourself!</p>
+<h1 id="…"><a href="#…" class="headerlink" title="…"></a>…</h1><p>//TODO</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/design.mp3">
+</iframe>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is a time-honored tradition for some people to catch up with sth blindly,even some easy things ,like movies.The following  is  a pie
+    
+    </summary>
+    
+      <category term="生活" scheme="http://burinicc.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="电影" scheme="http://burinicc.cn/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>复杂的sql</title>
@@ -160,11 +190,12 @@ select areainfo.areaname,nvl(business.cgje,0)cgje from
     <link href="http://burinicc.cn/2016/12/01/%E6%84%9F%E6%83%85%E6%80%9D%E8%80%83/"/>
     <id>http://burinicc.cn/2016/12/01/感情思考/</id>
     <published>2016-12-01T08:24:51.000Z</published>
-    <updated>2016-12-01T14:14:13.200Z</updated>
+    <updated>2016-12-02T01:20:25.408Z</updated>
     
     <content type="html"><![CDATA[<img src="/images/avatar.png" width="380" height="438">
 <p>  我想找一个时间问问莺歌可不可以再等我两年，我保证给她一个安全的未来，可是我害怕，我不是害怕自己做不到，而是害怕别人质疑的眼神或者是离去的背影，现在相比较来说很好。感情现在是小事情，在去广州之前我是个男孩，现在我是一个男人，因为我懂得了思考和行动，目前还没有一个男人应该有的资产，爱情也是奢饰品。消费不起，现在把技术学扎实，等把人生弄明白了，就找一个人结婚就算了。漂不漂亮无所谓，是不是她也好，我再给自己三年的时间！</p>
-]]></content>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/moodsblack.mp3">
+</iframe>]]></content>
     
     <summary type="html">
     
@@ -551,7 +582,7 @@ System.out.println(webpath);
     <link href="http://burinicc.cn/2016/12/01/%E5%B8%AE%E4%BD%A0%E5%88%86%E6%9E%90%E4%B8%80%E4%B8%8B%E7%A5%9E%E7%BB%8F%E7%97%85%E4%BA%BA%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9A%E4%B9%89/"/>
     <id>http://burinicc.cn/2016/12/01/帮你分析一下神经病人的具体定义/</id>
     <published>2016-12-01T02:46:12.000Z</published>
-    <updated>2016-12-01T09:58:54.074Z</updated>
+    <updated>2016-12-02T01:26:24.237Z</updated>
     
     <content type="html"><![CDATA[<p>以下所有内容均为白日呓语:<br>想太多我确定我是一个膨胀自负，明知道自己不行还会硬撑面子的人。这种人在文学作品中总是逞一时风光，到后面死的很惨，惨到让观者大呼过瘾。另w，这种人有一种自带的被动叫做「想太多」。这种 debuff 经常让我不知不觉身处尴尬之中，事情太多、太尴尬，每每想到自己都会脸红。<br>我挺喜欢小剥皮。<br>想了一下，不能形容为「欢乐要建立在别人的痛苦之上」，毕竟看见某些惨状我只会恶心而不是欢乐。</p>
 <pre><code>在同一件事上，我与他人付出了同样的努力，然而别人要比我差的时候，我会感到开心。
@@ -574,7 +605,8 @@ System.out.println(webpath);
 <p>以上所有内容均为白日呓语。<br>下面才是由衷的：</p>
 <p>想看的看，不想看的就别看</p>
 <p>喵~ 就是这样</p>
-]]></content>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/powerdesign.mp3">
+</iframe>]]></content>
     
     <summary type="html">
     

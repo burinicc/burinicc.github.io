@@ -291,6 +291,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+		  
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -304,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/复杂的sql/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/02/最好看的电影/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -329,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/01/复杂的sql/" itemprop="url">
-                  复杂的sql
+                <a class="post-title-link" href="/2016/12/02/最好看的电影/" itemprop="url">
+                  最好看的电影
                 </a>
               
             
@@ -344,8 +345,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T20:39:19+08:00">
-                2016-12-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T09:28:55+08:00">
+                2016-12-02
               </time>
             
 
@@ -363,8 +364,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
                   </a>
                 </span>
 
@@ -378,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/复杂的sql/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/复杂的sql/" itemprop="commentCount"></span>
+                <a href="/2016/12/02/最好看的电影/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/最好看的电影/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,94 +408,15 @@
       
         
           
-            <p>做统计分析时，统计每个地区医院的采购金额</p>
-<pre>
-select areainfo.areaname,nvl(business.cgje,0)cgje from
-(select areaname from bss_sys_area where arealevel='2')areainfo left join(
-select sum(nvl(cgje,0))cgje,
-       parentid,
-       (select areaname from bss_sys_area where business.parentid=areaid)areaname from (
-select dq,cgje,
-       (select parentid from bss_sys_area where dq=areaid)parentid
-from (
-select useryyid,
-       (select dq from useryy where useryyid=useryy.id)dq,
-       cgje
-from (
-select useryy.id      useryyid,
-       useryy.mc      useryymc,
-       yycgd.bm       yycgdbm,
-       yycgd.id       yycgdid,
-       usergys.id     usergysid,
-       usergys.mc     usergysmc,
-       yycgdmx.ypxxid,
-       ypxx.id,
-       ypxx.bm,
-       ypxx.mc,
-       ypxx.jx,
-       ypxx.gg,
-       ypxx.zhxs,
-       ypxx.scqymc,
-       ypxx.spmc,
-
-       ypxx.jyzt,
-
-       (select info
-          from dictinfo
-         where ypxx.jyzt = dictcode
-           and typecode = '003') jyztmc,
-       (select info
-          from dictinfo
-         where typecode = '011'
-           and dictcode = yycgdmx.cgzt) cgztmc,
-       yycgdmx.cgl,
-       yycgdmx.cgje,
-       yycgdmx.rkl,
-       yycgdmx.rkje,
-       yycgdmx.thl,
-       yycgdmx.thje,
-       yycgdmx.jsl,
-       yycgdmx.jsje
-
-  from yybusiness2016 yycgdmx, yycgd2016 yycgd, useryy, usergys, ypxx
- where yycgdmx.yycgdid = yycgd.id
-   and yycgd.useryyid = useryy.id
-   and yycgdmx.usergysid = usergys.id
-   and yycgdmx.ypxxid = ypxx.id)business)business)business group by parentid)business
-on business.areaname=areainfo.areaname</pre>
-
-<p>   下面的sql让我对外连接和内连接以及它们使用的时机有了一个更清楚认识，表的关联需要注意的事项就是一定要保证我们主表在所关联的表只能查到一条记录，这个字段要么不是外键要么就是多个字段构成关联表的唯一约束</p>
-   <pre>select yycgdmx.*,yycgdrk.rkl,
-       yycgdrk.rkje
-        from(
-      select
-        useryy.mc useryymc,
-        yycgd.bm yycgdbm,
-        yycgdmx.yycgdid,
-        yycgdmx.ypxxid,
-        usergys.mc usergysmc,
-        yycgdmx.cgl,
-        yycgdmx.cgje,
-        ypxx.*
-        from yycgdmx2016 yycgdmx,
-             yycgd2016 yycgd,
-             useryy,
-             usergys,
-             ypxx
-             where yycgdmx.yycgdid=yycgd.id
-             and yycgd.useryyid=useryy.id
-             and yycgdmx.ypxxid=ypxx.id
-             and yycgdmx.usergysid=usergys.id
-
-      )yycgdmx
-      （注释)外连接查询入库信息表
-       left join yycgdrk2016 yycgdrk
-      on yycgdmx.yycgdid=yycgdrk.yycgdid
-      and yycgdmx.ypxxid=yycgdrk.ypxxid</pre>
-
-
-<p>总结：在数据库设计时，为了保证数据的完整性，不能把入库量、结算量、退货量、结算金额等重要的业务数据放在yycgdmx中，因为这些信息在创建明细表中根本就不存在，然而这些数据对应的字段不能为空，所以就产生了矛盾。故还应该设计另外一张表来存放这些业务信息yybusiness，考虑到表的数据量也会很大，就写了一个创建表的储存过程，由系统的定时任务来调用。yybusiness中的数据插入时机是监督单位审核后，因为有业务逻辑的判断，使用触发器来插入数据比较复杂，相比较在业务层做这个工作比较方便。当更新yybusiness中的信息的时候，这时触发器会帮助把数据放到自己业务所对应的表中，比如结算流程，对应的yyjsd表。这里使用触发器还帮着实现了数据同步，另外，这样做实际上就是数据聚合。前段时间，一个同学问我数据聚合，当时把我问的一头雾水，现在想想还觉的脸红。其实，它就是为了我们方便操作数据，这里的操作主要是查询，你想想看，数据结构中，数组为什么比链表好查。其实是一个道理。</p>
-
+            <p>This is a time-honored tradition for some people to catch up with sth blindly,even some easy things ,like movies.The following  is  a piece of advice for them,and i hope to help them.<br>No.1:《Every cloud has a silver lining》</p>
+<p>Evalution:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOU will  be attracted deeply by Tiffany and Pat Solitano according to the movie!This is not a joke,as long as you really understand the idea and  the mood  what movie want to tell;</p>
+<p>No.2:《苔藓》</p>
+<p>Evalution:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The movie tells us how to live with the powerful persons.Don’t feel sympathy for yourself!</p>
+<h1 id="…"><a href="#…" class="headerlink" title="…"></a>…</h1><p>//TODO</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/design.mp3">
+</iframe>
           
         
       
@@ -527,7 +449,7 @@ on business.areaname=areainfo.areaname</pre>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -568,7 +490,7 @@ on business.areaname=areainfo.areaname</pre>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -585,7 +507,7 @@ on business.areaname=areainfo.areaname</pre>
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -671,6 +593,7 @@ on business.areaname=areainfo.areaname</pre>
 
 
         
+		 
       </div>
     </main>
 
@@ -934,6 +857,6 @@ on business.areaname=areainfo.areaname</pre>
 
   
 
-
+	
 </body>
 </html>
