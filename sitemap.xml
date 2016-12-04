@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://burinicc.cn/about/index.html</loc>
+    
+    <lastmod>2016-12-04T03:26:20.841Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://burinicc.cn/something/index.html</loc>
+    
+    <lastmod>2016-12-04T03:21:22.479Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://burinicc.cn/2016/12/02/%E4%BA%8C%E6%9C%9F%E6%94%B9%E9%80%A0%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2016-12-04T03:16:15.035Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://burinicc.cn/2016/12/02/%E6%9C%80%E5%A5%BD%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/</loc>
     
     <lastmod>2016-12-02T02:04:30.033Z</lastmod>
@@ -37,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://burinicc.cn/something/index.html</loc>
-    
-    <lastmod>2016-12-01T11:45:35.791Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://burinicc.cn/2016/12/01/sql%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/</loc>
     
     <lastmod>2016-12-01T10:59:28.024Z</lastmod>
@@ -75,13 +89,6 @@
     <loc>http://burinicc.cn/2016/12/01/oracle-Express-Edition%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/</loc>
     
     <lastmod>2016-12-01T09:57:57.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://burinicc.cn/about/index.html</loc>
-    
-    <lastmod>2016-12-01T09:41:00.254Z</lastmod>
     
   </url>
   
