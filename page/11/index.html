@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/帮你分析一下神经病人的具体定义/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/jfreechar使用说明书/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/01/帮你分析一下神经病人的具体定义/" itemprop="url">
-                  帮你分析一下神经病人的具体定义
+                <a class="post-title-link" href="/2016/12/01/jfreechar使用说明书/" itemprop="url">
+                  jfreechar使用说明书
                 </a>
               
             
@@ -345,7 +345,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:46:12+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:17:53+08:00">
                 2016-12-01
               </time>
             
@@ -364,8 +364,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/帮你分析一下神经病人的具体定义/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/帮你分析一下神经病人的具体定义/" itemprop="commentCount"></span>
+                <a href="/2016/12/01/jfreechar使用说明书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/jfreechar使用说明书/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,29 +408,8 @@
       
         
           
-            <p>以下所有内容均为白日呓语:<br>想太多我确定我是一个膨胀自负，明知道自己不行还会硬撑面子的人。这种人在文学作品中总是逞一时风光，到后面死的很惨，惨到让观者大呼过瘾。另w，这种人有一种自带的被动叫做「想太多」。这种 debuff 经常让我不知不觉身处尴尬之中，事情太多、太尴尬，每每想到自己都会脸红。<br>我挺喜欢小剥皮。<br>想了一下，不能形容为「欢乐要建立在别人的痛苦之上」，毕竟看见某些惨状我只会恶心而不是欢乐。</p>
-<pre><code>在同一件事上，我与他人付出了同样的努力，然而别人要比我差的时候，我会感到开心。
-在同一件事上，我比他人付出了更多，别人比我差的时候，我也会开心。
-若是不能比，或者我比他人差，那么就没得谈了，怎么开心得起来。
-</code></pre><p>小剥皮不像是乔大帝，乔大帝不努力。小剥皮会用尽手段以达到自己的目的。</p>
-<p>『怠惰啊！』</p>
-<p>这种欢乐来自于膨胀自负带来的优越感。优越感也带来一点负罪感，可是冥冥中有个声音告诉我我不该这么做。<br>我五年内都不会有女朋友</p>
-<pre><code>也不会有男朋友。
-</code></pre><p>不是说搬出去住么，又是一周了。与其说没有找到合适的房源，不如说是自己没有找。</p>
-<pre><code>我爸问我搬出去是不是因为谈恋爱了。
-我说不是。
-然后又问我不去外地实习是不是因为女友在成都。
-我说不是。
-我说，我五年内都不会有女朋友，要是有的话我把名字倒着写一个月。
-</code></pre><p>自己渣就别去祸害别人了。</p>
-<p>喝醉了就别到处说出洋相了。</p>
-<p>失恋了就别找异性倾诉，万一别人不喜欢你呢？</p>
-<p>你这是媚俗，是斯德哥尔摩综合征，别人想看就看不想看就不看，你还非要粘着别人不放。<br>拜托，大家都很忙的。</p>
-<p>以上所有内容均为白日呓语。<br>下面才是由衷的：</p>
-<p>想看的看，不想看的就别看</p>
-<p>喵~ 就是这样</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/powerdesign.mp3">
-</iframe>
+            <p>思路：<br>在action代码中，生成图形，把图片的名称暂存到session中，在页面中通过img展示生成的图形，通过jfreechart的servlet输出图形<br>解决方案：<br>一、导入jar包：<br>jcommns.jar<br>jfreechart.jar<br>二、配置jfreechart的servlet<br>    &lt;!-jfreechart –&gt;<br>    org.jfree.chart.servlet.DisplayChart<br>三、Action中配置:<br>第一步：准备dataset<br>DefaultCategoryDataset dataset=new DefaultCategoryDataset();<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgje(), “采购金额”, yycgdmxCustom.getAreaname());<br>        }<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgl(), “采购量”, yycgdmxCustom.getAreaname());<br>        }<br>解决中文乱码：<br>//创建主题样式<br>           StandardChartTheme standardChartTheme=new StandardChartTheme(“CN”);<br>           //设置标题字体<br>           standardChartTheme.setExtraLargeFont(new Font(“隶书”,Font.BOLD,20));<br>           //设置图例的字体<br>           standardChartTheme.setRegularFont(new Font(“宋书”,Font.PLAIN,15));<br>           //设置轴向的字体<br>           standardChartTheme.setLargeFont(new Font(“宋书”,Font.PLAIN,15));<br>           //应用主题样式<br>           ChartFactory.setChartTheme(standardChartTheme);<br>第二步：创建chart<br>柱状图：<br>JFreeChart chart=ChartFactory.createBarChart3D(“药品采购金额汇总”,//图形名称<br>                “”,//分类名称，为横坐标名称<br>                “采购金额”,//值名称，为纵坐标名称<br>                dataset,//数据集合<br>                PlotOrientation.VERTICAL,//垂直显示<br>                true,//是否显示图例<br>                false,//是否使用工具提示<br>                false);//是否使用url<br>        //在柱上显示数值<br>        CategoryPlot plot=chart.getCategoryPlot();<br>        BarRenderer3D renderer=new BarRenderer3D();<br>        //设置柱的颜色<br>        renderer.setSeriesPaint(0, Color.decode(“#ffffff”));<br>        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());<br>        renderer.setBaseItemLabelsVisible(true);<br>        //默认的数字显示在柱中，通过下面两句可以调整数字的显示位置<br>        renderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_LEFT));<br>        renderer.setItemLabelAnchorOffset(10D);<br>        plot.setRenderer(renderer);<br>第三步：将jfreechart得到的文件名传到页面<br>//将chart注入到jfreechart的工具中得到filename，把图片保存在session中，并把filename传到页面。<br>        String jfreechart_filename=<br>        ServletUtilities.saveChartAsPNG(chart,900,500,null,session);        model.addAttribute(“jfreechart_filename”,jfreechart_filename);<br>四、配置jsp页面<br>&lt;!—jfreechart图形–&gt;<br>在jsp页面添加img标签 属性src=”${baseurl}/jfreechart?filename=${jfreechart_filename}”</p>
+
           
         
       
@@ -463,7 +442,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
   </nav>
 
 
@@ -504,7 +483,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -521,7 +500,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
