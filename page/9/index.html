@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/oracle-Express-Edition安装中文说明/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/apache-poi-使用中文说明书/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/01/oracle-Express-Edition安装中文说明/" itemprop="url">
-                   oracle Express Edition安装中文说明
+                <a class="post-title-link" href="/2016/12/01/apache-poi-使用中文说明书/" itemprop="url">
+                  apache poi 使用中文说明书
                 </a>
               
             
@@ -345,7 +345,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:54:16+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:55:43+08:00">
                 2016-12-01
               </time>
             
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/oracle-Express-Edition安装中文说明/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/oracle-Express-Edition安装中文说明/" itemprop="commentCount"></span>
+                <a href="/2016/12/01/apache-poi-使用中文说明书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/apache-poi-使用中文说明书/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,14 +407,72 @@
 
       
         
-          
-            <p>P1：解压移动硬盘下的OracleXE112_Win64.zip，运行setup.exe，安装oracle  express 版本<br>P2： 解压移动硬盘下的32位的Instantclient-basic-nt-11.2.0.2.0.zip到E盘<br>P3：PL/SQL Developer使用InstantClient连接Oracle服务器，将C:\oraclexe\app\oracle\product\11.2.0\server\network\ADMIN下的tnsnames.ora拷贝到Instantclient-basic-nt-11.2.0.2.0.zip解压目录下；<br>P4. 打开PLSQL Developer，点击取消按钮，在首先项中设置Oracle_Home和OCI Library：<br>ToolsPreferencesOracleConnection：<br>Oracle_Home：Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>OCI Library：Instantclient-basic-nt-11.2.0.2.0.zip解压目录\oci.dll<br>P5 新建plsql.bat文件，文件内容如下：<br>@echo off<br>set path= Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>set ORACLE_HOME= Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>set TNS_ADMIN= Instantclient-basic-nt-11.2.0.2.0.zip解压目录<br>set NLS_LANG=AMERICAN_AMERICA.ZHS16GBK//可以解决中文乱码问题<br>start plsqldev.exe</p>
-<p>P5 将新建的plsql.bat文件copy在PLSQL Developer目录下，替换PLSQL Developer的桌面创建方式，用新建的plsql.bat文件启动PLSQL Developer;</p>
-<p>P6:用管理员账户和密码（用户名：sys，密码是你安装oracle服务端时设置的口令）就可以登录oracle系统了</p>
-<p>P8 使用超级管理登陆pl/sql,选择命令窗口,创建表空间:<br>create  tablespace 表空间名称：<br>logging<br>datafile ‘ 表空间数据文件’   –表空间数据文件位置在oracle服务器（如果是虚拟机，位置在虚拟机上）<br>size 32m<br>autoextend on<br>next 32m maxsize 2048m<br>extent management local;</p>
-<p>P9:使用sys创建oracle用户（业务系统连接oracle使用的用户）<br>create user用户名 identified by 密码<br>default  tablespace 默认表空间<br>temporary tablespace temp;<br>给用户授权：<br>grant connect,resource,dba to用户名;<br>P10：退出sys，使用新创建用户登陆pl/sql;s</p>
+          <p>XSSF导出 excel<br>1.导入jar包</p>
+<p>2.拷贝工具类ExcelExportSXXSSF</p>
+<p>XSSF操作03以上版本（07版本）excel，扩展名.xlsx，工作表行数没有限制<br>3.配置虚拟目录<br>在host标签中配置如下：</p>
+<p><Context path="/vir/" docBase="d:/upload/" reloadable="true" /><br>这样在浏览上输入：<br><a href="http://ip地址：端口号/vir/">http://ip地址：端口号/vir/</a><br>就可以访问d:/upload/目录下的文件了！servlet中可以使用如下代码得到webpath<br>/**            导出文件存放物理路径</p>
+<pre><code> * @param fileWebPath
+ *            导出文件web下载路径
+ * @param filePrefix
+ *            导出文件名的前缀          
+ * @param flushRows
+ *            存放在内存的数据量
+ * @param fieldNames
+ *            导出文件列标题
+ * @param fieldCodes
+ *               导出数据对象的字段名称     
+ * @param flushRows*/
+//导出文件存放的路径，并且是虚拟目录指向的路径
+String filePath = &quot;d:/upload/&quot;;
+//导出文件的前缀
+String filePrefix=&quot;studentinfo&quot;;
+//-1表示关闭自动刷新，手动控制写磁盘的时机，其它数据表示多少数据在内存保存，超过的则写入磁盘
+int flushRows=100;
 
-          
+//定义导出数据的title
+List&lt;String&gt; fieldNames=new ArrayList&lt;String&gt;();
+fieldNames.add(&quot;性别&quot;);
+fieldNames.add(&quot;年龄&quot;);
+fieldNames.add(&quot;姓名&quot;);
+fieldNames.add(&quot;爱好&quot;);
+
+//告诉导出类数据list中对象的属性，让ExcelExportSXXSSF通过反射获取对象的值
+List&lt;String&gt; fieldCodes=new ArrayList&lt;String&gt;();
+fieldCodes.add(&quot;gender&quot;);//药品流水号
+fieldCodes.add(&quot;age&quot;);//通用名
+fieldCodes.add(&quot;name&quot;);//价格
+fieldCodes.add(&quot;hobbies&quot;);
+
+
+
+//注意：fieldCodes和fieldNames个数必须相同且属性和title顺序一一对应，这样title和内容才一一对应
+
+
+//开始导出，执行一些workbook及sheet等对象的初始创建
+ExcelExportSXXSSF excelExportSXXSSF = ExcelExportSXXSSF.start(filePath, &quot;/vir&quot;, filePrefix, fieldNames, fieldCodes, flushRows);
+
+//准备导出的数据，将数据存入list，且list中对象的字段名称必须是刚才传入ExcelExportSXXSSF的名称
+List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+
+list.add(new Student(&quot;男&quot;, 23, &quot;张三&quot;, &quot;乒乓球,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 24, &quot;李四&quot;, &quot;篮球,羽毛球&quot;));
+list.add(new Student(&quot;女&quot;, 25, &quot;小红&quot;, &quot;高尔夫,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 23, &quot;小刘&quot;, &quot;乒乓球,羽毛球&quot;));
+
+//执行导出
+excelExportSXXSSF.writeDatasByObject(list);
+//输出文件，返回下载文件的http地址
+String webpath = excelExportSXXSSF.exportFile();
+
+System.out.println(webpath);
+</code></pre>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/01/apache-poi-使用中文说明书/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -446,7 +504,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -487,7 +545,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -495,7 +553,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

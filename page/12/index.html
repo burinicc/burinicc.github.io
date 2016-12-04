@@ -89,7 +89,7 @@
 <meta name="description" content="WELCOME TO MY TINY WORKSPACE!!!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bug">
-<meta property="og:url" content="http://burinicc.cn/index.html">
+<meta property="og:url" content="http://burinicc.cn/page/12/index.html">
 <meta property="og:site_name" content="Bug">
 <meta property="og:description" content="WELCOME TO MY TINY WORKSPACE!!!">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://burinicc.cn/"/>
+  <link rel="canonical" href="http://burinicc.cn/page/12/"/>
 
 
 
@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/02/最好看的电影/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/jfreechar使用说明书/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/02/最好看的电影/" itemprop="url">
-                  最好看的电影
+                <a class="post-title-link" href="/2016/12/01/jfreechar使用说明书/" itemprop="url">
+                  jfreechar使用说明书
                 </a>
               
             
@@ -345,8 +345,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T09:28:55+08:00">
-                2016-12-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:17:53+08:00">
+                2016-12-01
               </time>
             
 
@@ -364,8 +364,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/02/最好看的电影/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/最好看的电影/" itemprop="commentCount"></span>
+                <a href="/2016/12/01/jfreechar使用说明书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/jfreechar使用说明书/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,15 +408,8 @@
       
         
           
-            <p>This is a time-honored tradition for some people to catch up with sth blindly,even some easy things ,like movies.The following  is  a piece of advice for them,and i hope to help them.<br>No.1:《Every cloud has a silver lining》</p>
-<p>Evalution:</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOU will  be attracted deeply by Tiffany and Pat Solitano according to the movie!This is not a joke,as long as you really understand the idea and  the mood  what movie want to tell;</p>
-<p>No.2:《苔藓》</p>
-<p>Evalution:</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The movie tells us how to live with the powerful persons.Don’t feel sympathy for yourself!</p>
-<h1 id="…"><a href="#…" class="headerlink" title="…"></a>…</h1><p>//TODO</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/design.mp3">
-</iframe>
+            <p>思路：<br>在action代码中，生成图形，把图片的名称暂存到session中，在页面中通过img展示生成的图形，通过jfreechart的servlet输出图形<br>解决方案：<br>一、导入jar包：<br>jcommns.jar<br>jfreechart.jar<br>二、配置jfreechart的servlet<br>    &lt;!-jfreechart –&gt;<br>    org.jfree.chart.servlet.DisplayChart<br>三、Action中配置:<br>第一步：准备dataset<br>DefaultCategoryDataset dataset=new DefaultCategoryDataset();<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgje(), “采购金额”, yycgdmxCustom.getAreaname());<br>        }<br>        for (YycgdmxCustom yycgdmxCustom : list) {<br>            //第一个参数：统计数值，第二个参数：统计指标名称，第三个参数：统计分类<br>            dataset.addValue(yycgdmxCustom.getCgl(), “采购量”, yycgdmxCustom.getAreaname());<br>        }<br>解决中文乱码：<br>//创建主题样式<br>           StandardChartTheme standardChartTheme=new StandardChartTheme(“CN”);<br>           //设置标题字体<br>           standardChartTheme.setExtraLargeFont(new Font(“隶书”,Font.BOLD,20));<br>           //设置图例的字体<br>           standardChartTheme.setRegularFont(new Font(“宋书”,Font.PLAIN,15));<br>           //设置轴向的字体<br>           standardChartTheme.setLargeFont(new Font(“宋书”,Font.PLAIN,15));<br>           //应用主题样式<br>           ChartFactory.setChartTheme(standardChartTheme);<br>第二步：创建chart<br>柱状图：<br>JFreeChart chart=ChartFactory.createBarChart3D(“药品采购金额汇总”,//图形名称<br>                “”,//分类名称，为横坐标名称<br>                “采购金额”,//值名称，为纵坐标名称<br>                dataset,//数据集合<br>                PlotOrientation.VERTICAL,//垂直显示<br>                true,//是否显示图例<br>                false,//是否使用工具提示<br>                false);//是否使用url<br>        //在柱上显示数值<br>        CategoryPlot plot=chart.getCategoryPlot();<br>        BarRenderer3D renderer=new BarRenderer3D();<br>        //设置柱的颜色<br>        renderer.setSeriesPaint(0, Color.decode(“#ffffff”));<br>        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());<br>        renderer.setBaseItemLabelsVisible(true);<br>        //默认的数字显示在柱中，通过下面两句可以调整数字的显示位置<br>        renderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_LEFT));<br>        renderer.setItemLabelAnchorOffset(10D);<br>        plot.setRenderer(renderer);<br>第三步：将jfreechart得到的文件名传到页面<br>//将chart注入到jfreechart的工具中得到filename，把图片保存在session中，并把filename传到页面。<br>        String jfreechart_filename=<br>        ServletUtilities.saveChartAsPNG(chart,900,500,null,session);        model.addAttribute(“jfreechart_filename”,jfreechart_filename);<br>四、配置jsp页面<br>&lt;!—jfreechart图形–&gt;<br>在jsp页面添加img标签 属性src=”${baseurl}/jfreechart?filename=${jfreechart_filename}”</p>
+
           
         
       
@@ -449,7 +442,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span>
   </nav>
 
 
