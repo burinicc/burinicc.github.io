@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/04/二期改造项目笔记2/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/02/messx/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/04/二期改造项目笔记2/" itemprop="url">
-                  二期改造项目2
+                <a class="post-title-link" href="/2016/12/02/messx/" itemprop="url">
+                  Mess x
                 </a>
               
             
@@ -345,8 +345,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-04T14:03:05+08:00">
-                2016-12-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T09:28:55+08:00">
+                2016-12-02
               </time>
             
 
@@ -364,8 +364,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
+                  <a href="/categories/Lifestyle/" itemprop="url" rel="index">
+                    <span itemprop="name">Lifestyle</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/04/二期改造项目笔记2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/二期改造项目笔记2/" itemprop="commentCount"></span>
+                <a href="/2016/12/02/messx/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/messx/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,68 +407,17 @@
 
       
         
-          <h2 id="解决windows窗口bug"><a href="#解决windows窗口bug" class="headerlink" title="解决windows窗口bug"></a>解决windows窗口bug</h2><p>描述：当控件移动到窗口外就不能移动<br>解决方案：将outOfBounds.js引入到使用窗口控件的页面</p>
-<h2 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h2><p>它是通常在数据库中设计两张表一张dicttype一张dictinfo，dictinfo是dicttype的子表。</p>
-<h1 id="业务功能开发"><a href="#业务功能开发" class="headerlink" title="业务功能开发"></a>业务功能开发</h1><p>取派员维护</p>
-<h1 id="添加取派员："><a href="#添加取派员：" class="headerlink" title="添加取派员："></a>添加取派员：</h1><p>手机号校验需要扩展validatebox的校验规则</p>
-<pre>
-var regex=/^1[3|5|7|8|9][0-9]{9}$/;
-$.extend($.fn.validatebox.defaults.rules, {   
-    phonenumber: {   
-        validator: function(value, param){   
-            return regex.test(value);   
-        },   
-        message: '您的手机号输入有误！'  
-    }   
-});
-//对手机号输入框应用规则
-&ltinput class="easyui-validatebox" data-options="validType:'phonenumber'"&gt
-
-</pre>
-
-
-
-
-<h1 id="分页查询取派员："><a href="#分页查询取派员：" class="headerlink" title="分页查询取派员："></a>分页查询取派员：</h1><h2 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h2><p>//离线查询对象<br>DetachedCriteria detachedCriteria=pageBean.getDetachedCriteria();<br>//总数据量<br>//改变hibernate发出sql的形式,人为控制发出的sql,下面一句相当于发出<br>//select count(<em>) from table_name;<br>detachedCriteria.setProjection(Projections.rowCount());<br>List<Long> list=this.getHibernateTemplate().findByCriteria(detachedCriteria);<br>Long total=list.get(0);<br>pageBean.setTotal(total.intValue());<br>//改变hibernate发出sql的形式,重置select </em> from table_name;(默认)<br>detachedCriteria.setProjection(null);<br>//按照映射文件的映射关系将表的数据映射到对象的属性上<br>detachedCriteria.setResultTransformer(DetachedCriteria.ROOT_ENTITY);<br>List rows=this.getHibernateTemplate().findByCriteria(detachedCriteria,pageStart, pageSize)</p>
-<h2 id="表现层"><a href="#表现层" class="headerlink" title="表现层"></a>表现层</h2><p>注意事项：复选框的值如果勾选会随着表单提交到action，如果不勾选不会提交。<br>JSONObject jsonObj=JSONObject.fromObject(pageBean);<br>JSONObject 将对象转换为json数据，页面只需要page和rows干掉页面不需要的数据<br>{“currentPage”:1,”detachedCriteria”:{“alias”:”this”},”pageSize”:3,”pageStart”:0,”rows”:[{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc81cb0158cc838a5d0000”,”name”:”burinicc”,”standard”:”12341”,”station”:”github”,”telephone”:”13888888888”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc87ac0d0000”,”name”:”zxl”,”standard”:”1234”,”station”:”github”,”telephone”:”13866666666”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc8da0b20001”,”name”:”李大头”,”standard”:”小汽车”,”station”:”bluesheet”,”telephone”:”13333333333”}],”total”:7}<br>JsonConfig jsonConfig=new JsonConfig();<br>                jsonConfig.setExcludes(new String[]{“currentPage”,”pageSize”,”detachedCriteria”,”pageStart”});<br>                JSONObject jsonObj=JSONObject.fromObject(pageBean,jsonConfig);<br>{“rows”:[{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc81cb0158cc838a5d0000”,”name”:”burinicc”,”standard”:”12341”,”station”:”github”,”telephone”:”13888888888”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc87ac0d0000”,”name”:”zxl”,”standard”:”1234”,”station”:”github”,”telephone”:”13866666666”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc8da0b20001”,”name”:”李大头”,”standard”:”小汽车”,”station”:”bluesheet”,”telephone”:”13333333333”}],”total”:7}</p>
-<h1 id="批量删除（逻辑删除）"><a href="#批量删除（逻辑删除）" class="headerlink" title="批量删除（逻辑删除）"></a>批量删除（逻辑删除）</h1><p>页面：</p>
-<p>var rows=$(“#grid”).datagrid(“getSelections”);<br>        if(rows.length==0){<br>            $.messager.alert(“提示信息”,”你没有选择任何内容！”,”warning”);<br>        }else{<br>            var idArray=new Array();<br>        for(var i=0;i&lt;rows.length;i++){<br>              idArray[i]=rows[i].id;<br>             //idArray.push(rows[i].id);<br>        }<br>        var ids=idArray.join(“,”);<br>        window.location.href=”${pageContext.request.contextPath}/staffAction_delete.action?ids=”+ids;<br>        }</p>
-<h1 id="修改取派员信息"><a href="#修改取派员信息" class="headerlink" title="修改取派员信息"></a>修改取派员信息</h1><p>在datagrid中定义一个双击行事件onDblClickRow<br>function doDblClickRow(rowIndex, rowData){<br>  //打开修改取派员窗口<br>  $(‘#editStaffWindow’).window(“open”);<br>  //rowData将数据装到form表单<br>  $(‘#editstaffForm’).form(‘load’,rowData);<br>  //alert(rowData.name);<br>  $(‘#edit’).click(<br>    function(){<br>      var v=$(‘#editstaffForm’).form(“validate”);<br>      if(v){<br>        $(‘#editstaffForm’).submit();<br>      }<br>    }<br>  );<br>}<br>更新时需要注意先从数据中查询原始数据，然后在原始数据对象上修改。不能把模型对象直接交给hibernate更新。</p>
-<h1 id="区域设置"><a href="#区域设置" class="headerlink" title="区域设置"></a>区域设置</h1><p>一键导入（使用jQuery提供的ocupload.js插件）<br>原理：在form表单中动态添加target属性，值等于动态生成的iframe的name，实现页面没有跳转的效果。<br>使用规则：<br>第一步：在jsp页面中引入插件的js文件<br>第二步：在页面中提供任意一个元素<br>input id=’btn1’ value=”上传” type=”button”<br>第三步：调用插件提供的upload方法，动态修改页面html代码<br>$(function(){<br>    $(“#btn1”).upload(<br>      {<br>        action:’xxx.action’<br>        name:’myfile’<br>      }<br>      );<br>  });</p>
-<h2 id="解析excel文件（POI的使用）"><a href="#解析excel文件（POI的使用）" class="headerlink" title="  解析excel文件（POI的使用）"></a>  解析excel文件（POI的使用）</h2><p>  对于小数据量可以用hssf在action中直接解析<br>  第一步：HSSFWorkbook<br>  第二步：Sheet<br>  第三步：Row<br>  第四步：Cell</p>
-  <pre>
-    HSSFWorkbook workbook=new HSSFWorkbook(new FileInputStream(myfile));
-       HSSFSheet sheet=workbook.getSheetAt(0);
-
-       List<Region> list=new ArrayList<Region>();
-       for(Row row:sheet){
-         int rownum=row.getRowNum();
-         if(rownum==0){
-              continue;
-         }
-        String id=row.getCell(0).getStringCellValue();
-        String  province=row.getCell(1).getStringCellValue();
-        String  city=row.getCell(2).getStringCellValue();
-        String  district=row.getCell(3).getStringCellValue();
-        String  postcode=row.getCell(4).getStringCellValue();
-        Region region=new Region(id, province, city, district, postcode, null, null, null);
-        list.add(region);
-       }
-       regionService.insertBatch(list);
-</pre>
-
-
-
-<h2 id="使用Pinyin4J生成简码和城市编码"><a href="#使用Pinyin4J生成简码和城市编码" class="headerlink" title="使用Pinyin4J生成简码和城市编码"></a>使用Pinyin4J生成简码和城市编码</h2><p>导入一个pinyin4j工具类和jar包然后根据城市名称生成简码和城市编码。</p>
-<h1 id="添加分区"><a href="#添加分区" class="headerlink" title="添加分区"></a>添加分区</h1><p>第一步：使用combobox展示区域数据到下拉框中<br>第二步：在RegionAction中提供findALL方法，查询所有的区域数据，返回json数据,<br>为了使返回的json中含有name字段，需要在Region类中提供getName方法</p>
-<p>组合条件查询：<br>页面使用datagrid的load的方法<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/04/二期改造项目笔记2/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>This is a time-honored tradition for some people to catch up with sth blindly,even some easy things ,like movies.The following  is  a piece of advice for them,and i hope to help them.<br>No.1:《Every cloud has a silver lining》</p>
+<p>Evalution:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YOU will  be attracted deeply by Tiffany and Pat Solitano according to the movie!This is not a joke,as long as you really understand the idea and  the mood  what movie want to tell;</p>
+<p>No.2:《苔藓》</p>
+<p>Evalution:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The movie tells us how to live with the powerful persons.Don’t feel sympathy for yourself!</p>
+<h1 id="…"><a href="#…" class="headerlink" title="…"></a>…</h1><p>//TODO</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/design.mp3">
+</iframe>
+          
         
       
     </div>
@@ -500,7 +449,7 @@ $.extend($.fn.validatebox.defaults.rules, {
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -541,7 +490,7 @@ $.extend($.fn.validatebox.defaults.rules, {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -558,7 +507,7 @@ $.extend($.fn.validatebox.defaults.rules, {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
