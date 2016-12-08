@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/07/voa/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/08/apache-poi-使用中文说明书/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/07/voa/" itemprop="url">
-                  VOA
+                <a class="post-title-link" href="/2016/12/08/apache-poi-使用中文说明书/" itemprop="url">
+                  apache poi 使用中文说明书
                 </a>
               
             
@@ -345,8 +345,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-07T01:44:04+08:00">
-                2016-12-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T10:55:43+08:00">
+                2016-12-08
               </time>
             
 
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/07/voa/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/07/voa/" itemprop="commentCount"></span>
+                <a href="/2016/12/08/apache-poi-使用中文说明书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/apache-poi-使用中文说明书/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,10 +407,77 @@
 
       
         
-          
-            <p>too close for comfort<br>in exchange for<br>cold comfort<br>personal question<br>clothes make the man<br>repeal</p>
+          <p>HSSF is the POI Project’s pure Java implementation of the Excel ‘97(-2007) file format. XSSF is the POI Project’s pure Java implementation of the Excel 2007 OOXML (.xlsx) file format.</p>
+<p>HSSF and XSSF provides ways to read spreadsheets create, modify, read and write XLS spreadsheets. They provide:</p>
+<pre><code>low level structures for those with special needs
+an eventmodel api for efficient read-only access
+a full usermodel api for creating, reading and modifying XLS files
+</code></pre><p>XSSF导出 excel<br>1.导入jar包</p>
+<p>2.拷贝工具类ExcelExportSXXSSF</p>
+<p>XSSF操作03以上版本（07版本）excel，扩展名.xlsx，工作表行数没有限制<br>3.配置虚拟目录<br>在host标签中配置如下：</p>
+<p><Context path="/vir/" docBase="d:/upload/" reloadable="true" /><br>这样在浏览上输入：<br><a href="http://ip地址：端口号/vir/">http://ip地址：端口号/vir/</a><br>就可以访问d:/upload/目录下的文件了！servlet中可以使用如下代码得到webpath<br>/**            导出文件存放物理路径</p>
+<pre><code> * @param fileWebPath
+ *            导出文件web下载路径
+ * @param filePrefix
+ *            导出文件名的前缀          
+ * @param flushRows
+ *            存放在内存的数据量
+ * @param fieldNames
+ *            导出文件列标题
+ * @param fieldCodes
+ *               导出数据对象的字段名称     
+ * @param flushRows*/
+//导出文件存放的路径，并且是虚拟目录指向的路径
+String filePath = &quot;d:/upload/&quot;;
+//导出文件的前缀
+String filePrefix=&quot;studentinfo&quot;;
+//-1表示关闭自动刷新，手动控制写磁盘的时机，其它数据表示多少数据在内存保存，超过的则写入磁盘
+int flushRows=100;
 
-          
+//定义导出数据的title
+List&lt;String&gt; fieldNames=new ArrayList&lt;String&gt;();
+fieldNames.add(&quot;性别&quot;);
+fieldNames.add(&quot;年龄&quot;);
+fieldNames.add(&quot;姓名&quot;);
+fieldNames.add(&quot;爱好&quot;);
+
+//告诉导出类数据list中对象的属性，让ExcelExportSXXSSF通过反射获取对象的值
+List&lt;String&gt; fieldCodes=new ArrayList&lt;String&gt;();
+fieldCodes.add(&quot;gender&quot;);//药品流水号
+fieldCodes.add(&quot;age&quot;);//通用名
+fieldCodes.add(&quot;name&quot;);//价格
+fieldCodes.add(&quot;hobbies&quot;);
+
+
+
+//注意：fieldCodes和fieldNames个数必须相同且属性和title顺序一一对应，这样title和内容才一一对应
+
+
+//开始导出，执行一些workbook及sheet等对象的初始创建
+ExcelExportSXXSSF excelExportSXXSSF = ExcelExportSXXSSF.start(filePath, &quot;/vir&quot;, filePrefix, fieldNames, fieldCodes, flushRows);
+
+//准备导出的数据，将数据存入list，且list中对象的字段名称必须是刚才传入ExcelExportSXXSSF的名称
+List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+
+list.add(new Student(&quot;男&quot;, 23, &quot;张三&quot;, &quot;乒乓球,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 24, &quot;李四&quot;, &quot;篮球,羽毛球&quot;));
+list.add(new Student(&quot;女&quot;, 25, &quot;小红&quot;, &quot;高尔夫,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 23, &quot;小刘&quot;, &quot;乒乓球,羽毛球&quot;));
+
+//执行导出
+excelExportSXXSSF.writeDatasByObject(list);
+//输出文件，返回下载文件的http地址
+String webpath = excelExportSXXSSF.exportFile();
+
+System.out.println(webpath);
+</code></pre>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/08/apache-poi-使用中文说明书/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

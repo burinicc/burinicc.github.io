@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/apache-poi-使用中文说明书/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/tomcat-内存溢出三种解决方式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/01/apache-poi-使用中文说明书/" itemprop="url">
-                  apache poi 使用中文说明书
+                <a class="post-title-link" href="/2016/12/01/tomcat-内存溢出三种解决方式/" itemprop="url">
+                  tomcat 内存溢出三种解决方式
                 </a>
               
             
@@ -345,7 +345,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:55:43+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T11:04:33+08:00">
                 2016-12-01
               </time>
             
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/apache-poi-使用中文说明书/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/apache-poi-使用中文说明书/" itemprop="commentCount"></span>
+                <a href="/2016/12/01/tomcat-内存溢出三种解决方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/tomcat-内存溢出三种解决方式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,68 +407,10 @@
 
       
         
-          <p>XSSF导出 excel<br>1.导入jar包</p>
-<p>2.拷贝工具类ExcelExportSXXSSF</p>
-<p>XSSF操作03以上版本（07版本）excel，扩展名.xlsx，工作表行数没有限制<br>3.配置虚拟目录<br>在host标签中配置如下：</p>
-<p><Context path="/vir/" docBase="d:/upload/" reloadable="true" /><br>这样在浏览上输入：<br><a href="http://ip地址：端口号/vir/">http://ip地址：端口号/vir/</a><br>就可以访问d:/upload/目录下的文件了！servlet中可以使用如下代码得到webpath<br>/**            导出文件存放物理路径</p>
-<pre><code> * @param fileWebPath
- *            导出文件web下载路径
- * @param filePrefix
- *            导出文件名的前缀          
- * @param flushRows
- *            存放在内存的数据量
- * @param fieldNames
- *            导出文件列标题
- * @param fieldCodes
- *               导出数据对象的字段名称     
- * @param flushRows*/
-//导出文件存放的路径，并且是虚拟目录指向的路径
-String filePath = &quot;d:/upload/&quot;;
-//导出文件的前缀
-String filePrefix=&quot;studentinfo&quot;;
-//-1表示关闭自动刷新，手动控制写磁盘的时机，其它数据表示多少数据在内存保存，超过的则写入磁盘
-int flushRows=100;
-
-//定义导出数据的title
-List&lt;String&gt; fieldNames=new ArrayList&lt;String&gt;();
-fieldNames.add(&quot;性别&quot;);
-fieldNames.add(&quot;年龄&quot;);
-fieldNames.add(&quot;姓名&quot;);
-fieldNames.add(&quot;爱好&quot;);
-
-//告诉导出类数据list中对象的属性，让ExcelExportSXXSSF通过反射获取对象的值
-List&lt;String&gt; fieldCodes=new ArrayList&lt;String&gt;();
-fieldCodes.add(&quot;gender&quot;);//药品流水号
-fieldCodes.add(&quot;age&quot;);//通用名
-fieldCodes.add(&quot;name&quot;);//价格
-fieldCodes.add(&quot;hobbies&quot;);
-
-
-
-//注意：fieldCodes和fieldNames个数必须相同且属性和title顺序一一对应，这样title和内容才一一对应
-
-
-//开始导出，执行一些workbook及sheet等对象的初始创建
-ExcelExportSXXSSF excelExportSXXSSF = ExcelExportSXXSSF.start(filePath, &quot;/vir&quot;, filePrefix, fieldNames, fieldCodes, flushRows);
-
-//准备导出的数据，将数据存入list，且list中对象的字段名称必须是刚才传入ExcelExportSXXSSF的名称
-List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
-
-list.add(new Student(&quot;男&quot;, 23, &quot;张三&quot;, &quot;乒乓球,羽毛球&quot;));
-list.add(new Student(&quot;男&quot;, 24, &quot;李四&quot;, &quot;篮球,羽毛球&quot;));
-list.add(new Student(&quot;女&quot;, 25, &quot;小红&quot;, &quot;高尔夫,羽毛球&quot;));
-list.add(new Student(&quot;男&quot;, 23, &quot;小刘&quot;, &quot;乒乓球,羽毛球&quot;));
-
-//执行导出
-excelExportSXXSSF.writeDatasByObject(list);
-//输出文件，返回下载文件的http地址
-String webpath = excelExportSXXSSF.exportFile();
-
-System.out.println(webpath);
-</code></pre>
+          <p>Tomcat内存溢出的原因<br>　　在生产环境中tomcat内存设置不好很容易出现内存溢出。造成内存溢出是不一样的，当然处理方式也不一样。<br>　　这里根据平时遇到的情况和相关资料进行一个总结。常见的一般会有下面三种情况：<br>　　1.OutOfMemoryError： Java heap space<br>　　2.OutOfMemoryError： PermGen space<br>　　3.OutOfMemoryError： unable to create new native thread.<br>　　Tomcat内存溢出解决方案<br>　　对于前两种情况，在应用本身没有内存泄露的情况下可以用设置tomcat jvm参数来解决。（-Xms -Xmx -XX：PermSize -XX：MaxPermSize）<br>　　最后一种可能需要调整操作系统和tomcat jvm参数同时调整才能达到目的。<br>　　第一种：是堆溢出。<br>　　原因分析：<br>JVM堆的设置是指java程序运行过程中JVM可以调配使用的内存空间的设置.JVM在启动的时候会自动设置Heap size的值，其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)是物理内存的1/4。可以利用JVM提供的-Xmn -Xms -Xmx等选项可进行设置。Heap size 的大小是Young Generation 和Tenured Generaion 之和。<br>在JVM中如果98％的时间是用于GC且可用的Heap size 不足2％的时候将抛出此异常信息。<br>Heap Size 最大不要超过可用物理内存的80％，一般的要将-Xms和-Xmx选项设置为相同，而-Xmn为1/4的-Xmx值。<br>　　没有内存泄露的情况下，调整-Xms -Xmx参数可以解决。<br>　　-Xms：初始堆大小<br>　　-Xmx：最大堆大小<br>　　但堆的大小受下面三方面影响：<br>　　1.相关操作系统的数据模型（32-bt还是64-bit）限制；（32位系统下，一般限制在1.5G~2G；我在2003 server 系统下（物理内存：4G和6G，jdk：1.6）测试 1612M，64位操作系统对内存无限制。）<br>　　2.系统的可用虚拟内存限制；<br>　　3.系统的可用物理内存限制。<br>　　堆的大小可以使用 java -Xmx<em>*</em>M version 命令来测试。支持的话会出现jdk的版本号，不支持会报错。<br>　　-Xms -Xmx一般配置成一样比较好比如set JAVA_OPTS= -Xms1024m -Xmx1024m<br>其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)是物理内存的1/4。可以利用JVM提供的-Xmn -Xms -Xmx等选项可<br>进行设置<br>实例，以下给出1G内存环境下java jvm 的参数设置参考：<br>JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true “<br>JAVA_OPTS=”-server -Xms768m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=256m -XX:<br>NewSize=192m -XX:MaxNewSize=384m”<br>CATALINA_OPTS=”-server -Xms768m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=256m<br>-XX:NewSize=192m -XX:MaxNewSize=384m”<br>服务器为1G内存：JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true “<br>服务器为64位、2G内存: JAVA_OPTS=’-server -Xms1024m -Xmx1536m -XX:PermSize=128M -XX:MaxNewSize=256m -XX:MaxPermSize=256m’<br>——————-解决方案1：—————————–<br>前提：是执行startup.bat启动tomcat的方式<br>Linux服务器：<br>在/usr/local/apache-tomcat-5.5.23/bin 目录下的catalina.sh<br>添加：JAVA_OPTS=’-Xms512m -Xmx1024m’<br>或者 JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:MaxNewSize=256m”<br>或者 CATALINA_OPTS=”-server -Xms256m -Xmx300m”<br>Windows服务器：<br>在catalina.bat最前面加入<br>set JAVA_OPTS=-Xms128m -Xmx350m<br>或者set CATALINA_OPTS=-Xmx300M -Xms256M<br>（区别是一个直接设置jvm内存，另一个设置tomcat内存，CATALINA_OPTS似乎可以与JAVA_OPTS不加区别的使用）<br>基本参数说明<br>-client，-server<br>这两个参数用于设置虚拟机使用何种运行模式，一定要作为第一个参数，client模式启动比较快，但运行时性能和内存管理效率不如server模式，通常用于客户端应用程序。相反，server模式启动比client慢，但可获得更高的运行性能。<br>在windows上，缺省的虚拟机类型为client模式，如果要使用server模式，就需要在启动虚拟机时加-server参数，以获得更高性能，对服务器端应用，推荐采用server模式，尤其是多个CPU的系统。在Linux，Solaris上缺省采用server模式。<br>此外，在多cup下，建议用server模式<br>-Xms<size><br>设置虚拟机可用内存堆的初始大小，缺省单位为字节，该大小为1024的整数倍并且要大于1MB，可用k(K)或m(M)为单位来设置较大的内存数。初始堆大小为2MB。加“m”说明是MB，否则就是KB了。<br>例如：-Xms6400K，-Xms256M<br>-Xmx<size><br>设置虚拟机的最大可用大小，缺省单位为字节。该值必须为1024整数倍，并且要大于2MB。可用k(K)或m(M)为单位来设置较大的内存数。缺省堆最大值为64MB。<br>例如：-Xmx81920K，-Xmx80M<br>当应用程序申请了大内存运行时虚拟机抛出java.lang.OutOfMemoryError: Java heap space错误，就需要使用-Xmx设置较大的可用内存堆。<br>PermSize/MaxPermSize：定义Perm段的尺寸，即永久保存区域的大小，PermSize为JVM启动时初始化Perm的内存大小；MaxPermSize为最大可占用的Perm内存大小。在用户生产环境上一般将这两个值设为相同，以减少运行期间系统在内存申请上所花的开销。<br>如果用startup.bat启动tomcat,OK设置生效.够成功的分配200M内存.<br>——————-解决方案2：————————<br>前提：是执行startup.bat启动tomcat的方式<br>手动设置Heap size<br>Windows服务器：<br>修改TOMCAT_HOME/bin/catalina.bat，在“echo “Using CATALINA_BASE: $CATALINA_BASE””上面加入以下行：<br>Java代码<br>set JAVA_OPTS=%JAVA_OPTS% -server -Xms800m -Xmx800m -XX:MaxNewSize=256m<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/01/apache-poi-使用中文说明书/#more" rel="contents">
+            <a class="btn" href="/2016/12/01/tomcat-内存溢出三种解决方式/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>

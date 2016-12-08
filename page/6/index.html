@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/向maven私服中导入jar包/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/01/复杂的sql/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/01/向maven私服中导入jar包/" itemprop="url">
-                  向maven私服中导入jar包
+                <a class="post-title-link" href="/2016/12/01/复杂的sql/" itemprop="url">
+                  复杂的sql
                 </a>
               
             
@@ -345,7 +345,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T19:55:41+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T20:39:19+08:00">
                 2016-12-01
               </time>
             
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/向maven私服中导入jar包/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/向maven私服中导入jar包/" itemprop="commentCount"></span>
+                <a href="/2016/12/01/复杂的sql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/复杂的sql/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,12 +408,93 @@
       
         
           
-            <p>对于官网没有的jar包，maven向本地仓库导入jar包用如下命令<br>Java代码<br>mvn install:install-file<br>-DgroupId=包名<br>-DartifactId=项目名<br>-Dversion=版本号<br>-Dpackaging=jar<br>-Dfile=jar文件所在路径<br>以pinyin4j-2.5.0为例：<br>1、将pinyin4j-2.5.0.jar文件放在“D:\”目录下（该目录任意）<br>2、执行命令：<br>mvn install:install-file  -Dfile=D:\pinyin4j-2.5.0.jar -DgroupId=net.sourceforge.pinyin4j -DartifactId=pinyin4j -Dversion=2.5.0 -Dpackaging=jar  -DgeneratePom=true -DcreateChecksum=true<br>这样maven向本地仓库导入 pinyin4j-2.5.0.jar 包就成功了。<br>3.pom.xml文件配置：<br>Xml代码   </p>
-<pre>&ltdependency&gt
-      &ltgroupId&gtnet.sourceforge&lt/groupId&gt
-      &ltartifactId&gtpinyin4j&lt/artifactId&gt
-      &ltversion&gt2.5.0&lt/version&gt
-   &lt/dependency&gt</pre>
+            <p>做统计分析时，统计每个地区医院的采购金额</p>
+<pre>
+select areainfo.areaname,nvl(business.cgje,0)cgje from
+(select areaname from bss_sys_area where arealevel='2')areainfo left join(
+select sum(nvl(cgje,0))cgje,
+       parentid,
+       (select areaname from bss_sys_area where business.parentid=areaid)areaname from (
+select dq,cgje,
+       (select parentid from bss_sys_area where dq=areaid)parentid
+from (
+select useryyid,
+       (select dq from useryy where useryyid=useryy.id)dq,
+       cgje
+from (
+select useryy.id      useryyid,
+       useryy.mc      useryymc,
+       yycgd.bm       yycgdbm,
+       yycgd.id       yycgdid,
+       usergys.id     usergysid,
+       usergys.mc     usergysmc,
+       yycgdmx.ypxxid,
+       ypxx.id,
+       ypxx.bm,
+       ypxx.mc,
+       ypxx.jx,
+       ypxx.gg,
+       ypxx.zhxs,
+       ypxx.scqymc,
+       ypxx.spmc,
+
+       ypxx.jyzt,
+
+       (select info
+          from dictinfo
+         where ypxx.jyzt = dictcode
+           and typecode = '003') jyztmc,
+       (select info
+          from dictinfo
+         where typecode = '011'
+           and dictcode = yycgdmx.cgzt) cgztmc,
+       yycgdmx.cgl,
+       yycgdmx.cgje,
+       yycgdmx.rkl,
+       yycgdmx.rkje,
+       yycgdmx.thl,
+       yycgdmx.thje,
+       yycgdmx.jsl,
+       yycgdmx.jsje
+
+  from yybusiness2016 yycgdmx, yycgd2016 yycgd, useryy, usergys, ypxx
+ where yycgdmx.yycgdid = yycgd.id
+   and yycgd.useryyid = useryy.id
+   and yycgdmx.usergysid = usergys.id
+   and yycgdmx.ypxxid = ypxx.id)business)business)business group by parentid)business
+on business.areaname=areainfo.areaname</pre>
+
+<p>   下面的sql让我对外连接和内连接以及它们使用的时机有了一个更清楚认识，表的关联需要注意的事项就是一定要保证我们主表在所关联的表只能查到一条记录，这个字段要么不是外键要么就是多个字段构成关联表的唯一约束</p>
+   <pre>select yycgdmx.*,yycgdrk.rkl,
+       yycgdrk.rkje
+        from(
+      select
+        useryy.mc useryymc,
+        yycgd.bm yycgdbm,
+        yycgdmx.yycgdid,
+        yycgdmx.ypxxid,
+        usergys.mc usergysmc,
+        yycgdmx.cgl,
+        yycgdmx.cgje,
+        ypxx.*
+        from yycgdmx2016 yycgdmx,
+             yycgd2016 yycgd,
+             useryy,
+             usergys,
+             ypxx
+             where yycgdmx.yycgdid=yycgd.id
+             and yycgd.useryyid=useryy.id
+             and yycgdmx.ypxxid=ypxx.id
+             and yycgdmx.usergysid=usergys.id
+
+      )yycgdmx
+      （注释)外连接查询入库信息表
+       left join yycgdrk2016 yycgdrk
+      on yycgdmx.yycgdid=yycgdrk.yycgdid
+      and yycgdmx.ypxxid=yycgdrk.ypxxid</pre>
+
+
+<p>总结：在数据库设计时，为了保证数据的完整性，不能把入库量、结算量、退货量、结算金额等重要的业务数据放在yycgdmx中，因为这些信息在创建明细表中根本就不存在，然而这些数据对应的字段不能为空，所以就产生了矛盾。故还应该设计另外一张表来存放这些业务信息yybusiness，考虑到表的数据量也会很大，就写了一个创建表的储存过程，由系统的定时任务来调用。yybusiness中的数据插入时机是监督单位审核后，因为有业务逻辑的判断，使用触发器来插入数据比较复杂，相比较在业务层做这个工作比较方便。当更新yybusiness中的信息的时候，这时触发器会帮助把数据放到自己业务所对应的表中，比如结算流程，对应的yyjsd表。这里使用触发器还帮着实现了数据同步，另外，这样做实际上就是数据聚合。前段时间，一个同学问我数据聚合，当时把我问的一头雾水，现在想想还觉的脸红。其实，它就是为了我们方便操作数据，这里的操作主要是查询，你想想看，数据结构中，数组为什么比链表好查。其实是一个道理。</p>
 
           
         

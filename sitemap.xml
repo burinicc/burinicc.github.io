@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://burinicc.cn/2016/12/02/messx/</loc>
+    
+    <lastmod>2016-12-08T13:19:43.440Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://burinicc.cn/2016/12/08/apache-poi-%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E%E4%B9%A6/</loc>
+    
+    <lastmod>2016-12-08T13:18:45.853Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://burinicc.cn/2016/12/01/tomcat-%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E4%B8%89%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/</loc>
     
     <lastmod>2016-12-08T12:27:00.017Z</lastmod>
@@ -33,20 +47,6 @@
     <loc>http://burinicc.cn/2016/12/01/jfreechar%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B9%A6/</loc>
     
     <lastmod>2016-12-08T12:26:08.467Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://burinicc.cn/2016/12/01/apache-poi-%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E%E4%B9%A6/</loc>
-    
-    <lastmod>2016-12-08T12:26:01.993Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://burinicc.cn/2016/12/02/%E6%9C%80%E5%A5%BD%E7%9C%8B%E7%9A%84%E7%94%B5%E5%BD%B1/</loc>
-    
-    <lastmod>2016-12-08T12:25:50.881Z</lastmod>
     
   </url>
   
