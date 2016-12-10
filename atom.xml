@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://burinicc.cn/"/>
-  <updated>2016-12-08T13:18:45.853Z</updated>
+  <updated>2016-12-10T01:08:34.560Z</updated>
   <id>http://burinicc.cn/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>权限管理</title>
+    <link href="http://burinicc.cn/2016/12/09/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
+    <id>http://burinicc.cn/2016/12/09/权限管理/</id>
+    <published>2016-12-09T09:30:43.000Z</published>
+    <updated>2016-12-10T01:08:34.560Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、权限概述（认证、授权）<br>2、权限控制方式(URL拦截权限控制、方法注释权限控制)<br>3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）<br>4、shiro框架</p>
+<h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。<br>认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。<br>授权：赋予用户访问某一功能的权利。</p>
+<h2 id="权限控制方式"><a href="#权限控制方式" class="headerlink" title="权限控制方式"></a>权限控制方式</h2><p>不论用户是点击菜单还是直接在客户端输入http地址，都是发出http请求。<br>第一类：可以通过过滤器或者拦截器对http请求进行校验，如果该用户有权限访问，则放行；如果没有，则不放行。这是基于url拦截的方式进行权限控制。<br>第二类：当在action方法加上注解后，用户访问action为当前action的代理对象，当检验权限通过后，通过反射调用目标权限的方法；这是基于代理方式进行权限控制。</p>
+<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>例子：登录淘宝后不用再登录天猫<br>CAS<br>application code 开发人员写的应用程序代码<br>subject 当前用户（广义）<br>SecurityManager 安全管理器shiro框架的核心类<br>realm 类似于Dao，负责访问安全数据（用户数据、角色数据、权限数据)</p>
+<h1 id="shiro使用"><a href="#shiro使用" class="headerlink" title="shiro使用"></a>shiro使用</h1><p>第一步：导入jar包<br>第二步：在web.xml配置spring整合shrio的过滤器<br>第三步：在spring文件中配置一个工厂bean为了创建shiro框架用到的过滤器<br>第四步：注册安全管理器，为安全管理器注入realm<br>第五步：注册realm</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1、权限概述（认证、授权）&lt;br&gt;2、权限控制方式(URL拦截权限控制、方法注释权限控制)&lt;br&gt;3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）&lt;br&gt;4、shiro框架&lt;/p&gt;
+&lt;h2 id=&quot;权限概述&quot;&gt;&lt;a href=&quot;#权限概述&quot; cla
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://burinicc.cn/categories/Tech/"/>
+    
+    
+      <category term="权限" scheme="http://burinicc.cn/tags/%E6%9D%83%E9%99%90/"/>
+    
+  </entry>
   
   <entry>
     <title>apache poi 使用中文说明书</title>
@@ -233,7 +261,7 @@ System.out.println(webpath);
     <link href="http://burinicc.cn/2016/12/04/%E4%BA%8C%E6%9C%9F%E6%94%B9%E9%80%A0%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B02/"/>
     <id>http://burinicc.cn/2016/12/04/二期改造项目笔记2/</id>
     <published>2016-12-04T06:03:05.000Z</published>
-    <updated>2016-12-08T12:24:12.800Z</updated>
+    <updated>2016-12-09T09:16:52.622Z</updated>
     
     <content type="html"><![CDATA[<h2 id="解决windows窗口bug"><a href="#解决windows窗口bug" class="headerlink" title="解决windows窗口bug"></a>解决windows窗口bug</h2><p>描述：当控件移动到窗口外就不能移动<br>解决方案：将outOfBounds.js引入到使用窗口控件的页面</p>
 <h2 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h2><p>它是通常在数据库中设计两张表一张dicttype一张dictinfo，dictinfo是dicttype的子表。</p>
@@ -257,13 +285,27 @@ $.extend($.fn.validatebox.defaults.rules, {
 
 
 
-<h1 id="分页查询取派员："><a href="#分页查询取派员：" class="headerlink" title="分页查询取派员："></a>分页查询取派员：</h1><h2 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h2><p>//离线查询对象<br>DetachedCriteria detachedCriteria=pageBean.getDetachedCriteria();<br>//总数据量<br>//改变hibernate发出sql的形式,人为控制发出的sql,下面一句相当于发出<br>//select count(<em>) from table_name;<br>detachedCriteria.setProjection(Projections.rowCount());<br>List<long> list=this.getHibernateTemplate().findByCriteria(detachedCriteria);<br>Long total=list.get(0);<br>pageBean.setTotal(total.intValue());<br>//改变hibernate发出sql的形式,重置select </long></em> from table_name;(默认)<br>detachedCriteria.setProjection(null);<br>//按照映射文件的映射关系将表的数据映射到对象的属性上<br>detachedCriteria.setResultTransformer(DetachedCriteria.ROOT_ENTITY);<br>List rows=this.getHibernateTemplate().findByCriteria(detachedCriteria,pageStart, pageSize)</p>
-<h2 id="表现层"><a href="#表现层" class="headerlink" title="表现层"></a>表现层</h2><p>注意事项：复选框的值如果勾选会随着表单提交到action，如果不勾选不会提交。<br>JSONObject jsonObj=JSONObject.fromObject(pageBean);<br>JSONObject 将对象转换为json数据，页面只需要page和rows干掉页面不需要的数据<br>{“currentPage”:1,”detachedCriteria”:{“alias”:”this”},”pageSize”:3,”pageStart”:0,”rows”:[{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc81cb0158cc838a5d0000”,”name”:”burinicc”,”standard”:”12341”,”station”:”github”,”telephone”:”13888888888”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc87ac0d0000”,”name”:”zxl”,”standard”:”1234”,”station”:”github”,”telephone”:”13866666666”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc8da0b20001”,”name”:”李大头”,”standard”:”小汽车”,”station”:”bluesheet”,”telephone”:”13333333333”}],”total”:7}<br>JsonConfig jsonConfig=new JsonConfig();<br>                jsonConfig.setExcludes(new String[]{“currentPage”,”pageSize”,”detachedCriteria”,”pageStart”});<br>                JSONObject jsonObj=JSONObject.fromObject(pageBean,jsonConfig);<br>{“rows”:[{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc81cb0158cc838a5d0000”,”name”:”burinicc”,”standard”:”12341”,”station”:”github”,”telephone”:”13888888888”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc87ac0d0000”,”name”:”zxl”,”standard”:”1234”,”station”:”github”,”telephone”:”13866666666”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc8da0b20001”,”name”:”李大头”,”standard”:”小汽车”,”station”:”bluesheet”,”telephone”:”13333333333”}],”total”:7}</p>
-<h1 id="批量删除（逻辑删除）"><a href="#批量删除（逻辑删除）" class="headerlink" title="批量删除（逻辑删除）"></a>批量删除（逻辑删除）</h1><p>页面：</p>
-<p>var rows=$(“#grid”).datagrid(“getSelections”);<br>        if(rows.length==0){<br>            $.messager.alert(“提示信息”,”你没有选择任何内容！”,”warning”);<br>        }else{<br>            var idArray=new Array();<br>        for(var i=0;i&lt;rows.length;i++){<br>              idArray[i]=rows[i].id;<br>             //idArray.push(rows[i].id);<br>        }<br>        var ids=idArray.join(“,”);<br>        window.location.href=”${pageContext.request.contextPath}/staffAction_delete.action?ids=”+ids;<br>        }</p>
+<h1 id="分页查询取派员："><a href="#分页查询取派员：" class="headerlink" title="分页查询取派员："></a>分页查询取派员：</h1><h2 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h2><p>//离线查询对象<br>DetachedCriteria detachedCriteria=pageBean.getDetachedCriteria();<br>//总数据量<br>//改变hibernate发出sql的形式,人为控制发出的sql,下面一句相当于发出</p>
+<pre>
+//select count(*) from table_name;
+detachedCriteria.setProjection(Projections.rowCount());
+List<long> list=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+Long total=list.get(0);
+pageBean.setTotal(total.intValue());
+//改变hibernate发出sql的形式,重置select * from table_name;(默认)
+detachedCriteria.setProjection(null);
+//按照映射文件的映射关系将表的数据映射到对象的属性上
+detachedCriteria.setResultTransformer(DetachedCriteria.ROOT_ENTITY);
+List rows=this.getHibernateTemplate().findByCriteria(detachedCriteria,pageStart, pageSize)
+</long></pre>
+
+
+<h2 id="表现层"><a href="#表现层" class="headerlink" title="表现层"></a>表现层</h2><p>注意事项：复选框的值如果勾选会随着表单提交到action，如果不勾选不会提交。<br>JSONObject jsonObj=JSONObject.fromObject(pageBean);<br>JSONObject 将对象转换为json数据，页面只需要page和rows干掉页面不需要的数据</p>
+<p>JsonConfig jsonConfig=new JsonConfig();<br>                jsonConfig.setExcludes(new String[]{“currentPage”,”pageSize”,”detachedCriteria”,”pageStart”});<br>                JSONObject jsonObj=JSONObject.fromObject(pageBean,jsonConfig);</p>
+<h1 id="批量删除（逻辑删除）"><a href="#批量删除（逻辑删除）" class="headerlink" title="批量删除（逻辑删除）"></a>批量删除（逻辑删除）</h1><h2 id="页面："><a href="#页面：" class="headerlink" title="页面："></a>页面：</h2><p>var rows=$(“#grid”).datagrid(“getSelections”);<br>        if(rows.length==0){<br>            $.messager.alert(“提示信息”,”你没有选择任何内容！”,”warning”);<br>        }else{<br>            var idArray=new Array();<br>        for(var i=0;i&lt;rows.length;i++){<br>              idArray[i]=rows[i].id;<br>             //idArray.push(rows[i].id);<br>        }<br>        var ids=idArray.join(“,”);<br>        window.location.href=”${pageContext.request.contextPath}/staffAction_delete.action?ids=”+ids;<br>        }</p>
 <h1 id="修改取派员信息"><a href="#修改取派员信息" class="headerlink" title="修改取派员信息"></a>修改取派员信息</h1><p>在datagrid中定义一个双击行事件onDblClickRow<br>function doDblClickRow(rowIndex, rowData){<br>  //打开修改取派员窗口<br>  $(‘#editStaffWindow’).window(“open”);<br>  //rowData将数据装到form表单<br>  $(‘#editstaffForm’).form(‘load’,rowData);<br>  //alert(rowData.name);<br>  $(‘#edit’).click(<br>    function(){<br>      var v=$(‘#editstaffForm’).form(“validate”);<br>      if(v){<br>        $(‘#editstaffForm’).submit();<br>      }<br>    }<br>  );<br>}<br>更新时需要注意先从数据中查询原始数据，然后在原始数据对象上修改。不能把模型对象直接交给hibernate更新。</p>
 <h1 id="区域设置"><a href="#区域设置" class="headerlink" title="区域设置"></a>区域设置</h1><p>一键导入（使用jQuery提供的ocupload.js插件）<br>原理：在form表单中动态添加target属性，值等于动态生成的iframe的name，实现页面没有跳转的效果。<br>使用规则：<br>第一步：在jsp页面中引入插件的js文件<br>第二步：在页面中提供任意一个元素<br>input id=’btn1’ value=”上传” type=”button”<br>第三步：调用插件提供的upload方法，动态修改页面html代码<br>$(function(){<br>    $(“#btn1”).upload(<br>      {<br>        action:’xxx.action’<br>        name:’myfile’<br>      }<br>      );<br>  });</p>
-<h2 id="解析excel文件（POI的使用）"><a href="#解析excel文件（POI的使用）" class="headerlink" title="  解析excel文件（POI的使用）"></a>  解析excel文件（POI的使用）</h2><p>  对于小数据量可以用hssf在action中直接解析<br>  第一步：HSSFWorkbook<br>  第二步：Sheet<br>  第三步：Row<br>  第四步：Cell</p>
+<h2 id="解析excel文件（POI的使用）"><a href="#解析excel文件（POI的使用）" class="headerlink" title="  解析excel文件（POI的使用）"></a>  解析excel文件（POI的使用）</h2><p>  对于小数据量可以用hssf在action中直接解析<br>  第一步：HSSFWorkbook<br>  第二步：Sheet<br>  第三步：Row<br>  第四步：Cell<br></p>
   <pre>
     HSSFWorkbook workbook=new HSSFWorkbook(new FileInputStream(myfile));
        HSSFSheet sheet=workbook.getSheetAt(0);
@@ -287,10 +329,13 @@ $.extend($.fn.validatebox.defaults.rules, {
 
 
 
+
+
 <h2 id="使用Pinyin4J生成简码和城市编码"><a href="#使用Pinyin4J生成简码和城市编码" class="headerlink" title="使用Pinyin4J生成简码和城市编码"></a>使用Pinyin4J生成简码和城市编码</h2><p>导入一个pinyin4j工具类和jar包然后根据城市名称生成简码和城市编码。</p>
 <h1 id="添加分区"><a href="#添加分区" class="headerlink" title="添加分区"></a>添加分区</h1><p>第一步：使用combobox展示区域数据到下拉框中<br>第二步：在RegionAction中提供findALL方法，查询所有的区域数据，返回json数据,<br>为了使返回的json中含有name字段，需要在Region类中提供getName方法</p>
 <p>组合条件查询：<br>页面使用datagrid的load的方法<br><a id="more"></a></p>
-<h1 id="添加定区"><a href="#添加定区" class="headerlink" title="添加定区"></a>添加定区</h1><p>在向定区表中插入数据的时候，还应该更新分区表中的decidezone_id<br>这个时候应该看inverse的值为true，谁的值为true，表示谁放弃了维护外键的权利。通常情况下，外键是由多的一方来维护。</p>
+<h1 id="添加定区"><a href="#添加定区" class="headerlink" title="添加定区"></a>添加定区</h1><p>在向定区表中插入数据的时候，还应该更新分区表中的decidezone_id<br>这个时候应该看inverse的值，谁的值为true，表示谁放弃了维护外键的权利。通常情况下，外键是由多的一方来维护。</p>
+<h2 id="Datagrid的编辑功能"><a href="#Datagrid的编辑功能" class="headerlink" title="Datagrid的编辑功能"></a>Datagrid的编辑功能</h2><p>通过数据表格的列属性editor开启指定列的编辑功能<br>数据表格的方法：<br>插入一行：insertRow<br>删除一行：deleteRow<br>开启编辑状态：beginEdit<br>结束编辑状态：endEdit<br>获得选中行的索引：getRowIndex<br>获得选中的第一行：getSelected<br>数据表格的事件：<br>结束编辑状态时触发：onAfterEdit</p>
 ]]></content>
     
     <summary type="html">
@@ -317,13 +362,27 @@ $.extend($.fn.validatebox.defaults.rules, {
 
 
 
-&lt;h1 id=&quot;分页查询取派员：&quot;&gt;&lt;a href=&quot;#分页查询取派员：&quot; class=&quot;headerlink&quot; title=&quot;分页查询取派员：&quot;&gt;&lt;/a&gt;分页查询取派员：&lt;/h1&gt;&lt;h2 id=&quot;Dao层&quot;&gt;&lt;a href=&quot;#Dao层&quot; class=&quot;headerlink&quot; title=&quot;Dao层&quot;&gt;&lt;/a&gt;Dao层&lt;/h2&gt;&lt;p&gt;//离线查询对象&lt;br&gt;DetachedCriteria detachedCriteria=pageBean.getDetachedCriteria();&lt;br&gt;//总数据量&lt;br&gt;//改变hibernate发出sql的形式,人为控制发出的sql,下面一句相当于发出&lt;br&gt;//select count(&lt;em&gt;) from table_name;&lt;br&gt;detachedCriteria.setProjection(Projections.rowCount());&lt;br&gt;List&lt;Long&gt; list=this.getHibernateTemplate().findByCriteria(detachedCriteria);&lt;br&gt;Long total=list.get(0);&lt;br&gt;pageBean.setTotal(total.intValue());&lt;br&gt;//改变hibernate发出sql的形式,重置select &lt;/em&gt; from table_name;(默认)&lt;br&gt;detachedCriteria.setProjection(null);&lt;br&gt;//按照映射文件的映射关系将表的数据映射到对象的属性上&lt;br&gt;detachedCriteria.setResultTransformer(DetachedCriteria.ROOT_ENTITY);&lt;br&gt;List rows=this.getHibernateTemplate().findByCriteria(detachedCriteria,pageStart, pageSize)&lt;/p&gt;
-&lt;h2 id=&quot;表现层&quot;&gt;&lt;a href=&quot;#表现层&quot; class=&quot;headerlink&quot; title=&quot;表现层&quot;&gt;&lt;/a&gt;表现层&lt;/h2&gt;&lt;p&gt;注意事项：复选框的值如果勾选会随着表单提交到action，如果不勾选不会提交。&lt;br&gt;JSONObject jsonObj=JSONObject.fromObject(pageBean);&lt;br&gt;JSONObject 将对象转换为json数据，页面只需要page和rows干掉页面不需要的数据&lt;br&gt;{“currentPage”:1,”detachedCriteria”:{“alias”:”this”},”pageSize”:3,”pageStart”:0,”rows”:[{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc81cb0158cc838a5d0000”,”name”:”burinicc”,”standard”:”12341”,”station”:”github”,”telephone”:”13888888888”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc87ac0d0000”,”name”:”zxl”,”standard”:”1234”,”station”:”github”,”telephone”:”13866666666”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc8da0b20001”,”name”:”李大头”,”standard”:”小汽车”,”station”:”bluesheet”,”telephone”:”13333333333”}],”total”:7}&lt;br&gt;JsonConfig jsonConfig=new JsonConfig();&lt;br&gt;                jsonConfig.setExcludes(new String[]{“currentPage”,”pageSize”,”detachedCriteria”,”pageStart”});&lt;br&gt;                JSONObject jsonObj=JSONObject.fromObject(pageBean,jsonConfig);&lt;br&gt;{“rows”:[{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc81cb0158cc838a5d0000”,”name”:”burinicc”,”standard”:”12341”,”station”:”github”,”telephone”:”13888888888”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc87ac0d0000”,”name”:”zxl”,”standard”:”1234”,”station”:”github”,”telephone”:”13866666666”},{“decidezones”:[],”deltag”:”0”,”haspda”:”1”,”id”:”2c9ba38258cc86b30158cc8da0b20001”,”name”:”李大头”,”standard”:”小汽车”,”station”:”bluesheet”,”telephone”:”13333333333”}],”total”:7}&lt;/p&gt;
-&lt;h1 id=&quot;批量删除（逻辑删除）&quot;&gt;&lt;a href=&quot;#批量删除（逻辑删除）&quot; class=&quot;headerlink&quot; title=&quot;批量删除（逻辑删除）&quot;&gt;&lt;/a&gt;批量删除（逻辑删除）&lt;/h1&gt;&lt;p&gt;页面：&lt;/p&gt;
-&lt;p&gt;var rows=$(“#grid”).datagrid(“getSelections”);&lt;br&gt;        if(rows.length==0){&lt;br&gt;            $.messager.alert(“提示信息”,”你没有选择任何内容！”,”warning”);&lt;br&gt;        }else{&lt;br&gt;            var idArray=new Array();&lt;br&gt;        for(var i=0;i&amp;lt;rows.length;i++){&lt;br&gt;              idArray[i]=rows[i].id;&lt;br&gt;             //idArray.push(rows[i].id);&lt;br&gt;        }&lt;br&gt;        var ids=idArray.join(“,”);&lt;br&gt;        window.location.href=”${pageContext.request.contextPath}/staffAction_delete.action?ids=”+ids;&lt;br&gt;        }&lt;/p&gt;
+&lt;h1 id=&quot;分页查询取派员：&quot;&gt;&lt;a href=&quot;#分页查询取派员：&quot; class=&quot;headerlink&quot; title=&quot;分页查询取派员：&quot;&gt;&lt;/a&gt;分页查询取派员：&lt;/h1&gt;&lt;h2 id=&quot;Dao层&quot;&gt;&lt;a href=&quot;#Dao层&quot; class=&quot;headerlink&quot; title=&quot;Dao层&quot;&gt;&lt;/a&gt;Dao层&lt;/h2&gt;&lt;p&gt;//离线查询对象&lt;br&gt;DetachedCriteria detachedCriteria=pageBean.getDetachedCriteria();&lt;br&gt;//总数据量&lt;br&gt;//改变hibernate发出sql的形式,人为控制发出的sql,下面一句相当于发出&lt;/p&gt;
+&lt;pre&gt;
+//select count(*) from table_name;
+detachedCriteria.setProjection(Projections.rowCount());
+List&lt;Long&gt; list=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+Long total=list.get(0);
+pageBean.setTotal(total.intValue());
+//改变hibernate发出sql的形式,重置select * from table_name;(默认)
+detachedCriteria.setProjection(null);
+//按照映射文件的映射关系将表的数据映射到对象的属性上
+detachedCriteria.setResultTransformer(DetachedCriteria.ROOT_ENTITY);
+List rows=this.getHibernateTemplate().findByCriteria(detachedCriteria,pageStart, pageSize)
+&lt;/pre&gt;
+
+
+&lt;h2 id=&quot;表现层&quot;&gt;&lt;a href=&quot;#表现层&quot; class=&quot;headerlink&quot; title=&quot;表现层&quot;&gt;&lt;/a&gt;表现层&lt;/h2&gt;&lt;p&gt;注意事项：复选框的值如果勾选会随着表单提交到action，如果不勾选不会提交。&lt;br&gt;JSONObject jsonObj=JSONObject.fromObject(pageBean);&lt;br&gt;JSONObject 将对象转换为json数据，页面只需要page和rows干掉页面不需要的数据&lt;/p&gt;
+&lt;p&gt;JsonConfig jsonConfig=new JsonConfig();&lt;br&gt;                jsonConfig.setExcludes(new String[]{“currentPage”,”pageSize”,”detachedCriteria”,”pageStart”});&lt;br&gt;                JSONObject jsonObj=JSONObject.fromObject(pageBean,jsonConfig);&lt;/p&gt;
+&lt;h1 id=&quot;批量删除（逻辑删除）&quot;&gt;&lt;a href=&quot;#批量删除（逻辑删除）&quot; class=&quot;headerlink&quot; title=&quot;批量删除（逻辑删除）&quot;&gt;&lt;/a&gt;批量删除（逻辑删除）&lt;/h1&gt;&lt;h2 id=&quot;页面：&quot;&gt;&lt;a href=&quot;#页面：&quot; class=&quot;headerlink&quot; title=&quot;页面：&quot;&gt;&lt;/a&gt;页面：&lt;/h2&gt;&lt;p&gt;var rows=$(“#grid”).datagrid(“getSelections”);&lt;br&gt;        if(rows.length==0){&lt;br&gt;            $.messager.alert(“提示信息”,”你没有选择任何内容！”,”warning”);&lt;br&gt;        }else{&lt;br&gt;            var idArray=new Array();&lt;br&gt;        for(var i=0;i&amp;lt;rows.length;i++){&lt;br&gt;              idArray[i]=rows[i].id;&lt;br&gt;             //idArray.push(rows[i].id);&lt;br&gt;        }&lt;br&gt;        var ids=idArray.join(“,”);&lt;br&gt;        window.location.href=”${pageContext.request.contextPath}/staffAction_delete.action?ids=”+ids;&lt;br&gt;        }&lt;/p&gt;
 &lt;h1 id=&quot;修改取派员信息&quot;&gt;&lt;a href=&quot;#修改取派员信息&quot; class=&quot;headerlink&quot; title=&quot;修改取派员信息&quot;&gt;&lt;/a&gt;修改取派员信息&lt;/h1&gt;&lt;p&gt;在datagrid中定义一个双击行事件onDblClickRow&lt;br&gt;function doDblClickRow(rowIndex, rowData){&lt;br&gt;  //打开修改取派员窗口&lt;br&gt;  $(‘#editStaffWindow’).window(“open”);&lt;br&gt;  //rowData将数据装到form表单&lt;br&gt;  $(‘#editstaffForm’).form(‘load’,rowData);&lt;br&gt;  //alert(rowData.name);&lt;br&gt;  $(‘#edit’).click(&lt;br&gt;    function(){&lt;br&gt;      var v=$(‘#editstaffForm’).form(“validate”);&lt;br&gt;      if(v){&lt;br&gt;        $(‘#editstaffForm’).submit();&lt;br&gt;      }&lt;br&gt;    }&lt;br&gt;  );&lt;br&gt;}&lt;br&gt;更新时需要注意先从数据中查询原始数据，然后在原始数据对象上修改。不能把模型对象直接交给hibernate更新。&lt;/p&gt;
 &lt;h1 id=&quot;区域设置&quot;&gt;&lt;a href=&quot;#区域设置&quot; class=&quot;headerlink&quot; title=&quot;区域设置&quot;&gt;&lt;/a&gt;区域设置&lt;/h1&gt;&lt;p&gt;一键导入（使用jQuery提供的ocupload.js插件）&lt;br&gt;原理：在form表单中动态添加target属性，值等于动态生成的iframe的name，实现页面没有跳转的效果。&lt;br&gt;使用规则：&lt;br&gt;第一步：在jsp页面中引入插件的js文件&lt;br&gt;第二步：在页面中提供任意一个元素&lt;br&gt;input id=’btn1’ value=”上传” type=”button”&lt;br&gt;第三步：调用插件提供的upload方法，动态修改页面html代码&lt;br&gt;$(function(){&lt;br&gt;    $(“#btn1”).upload(&lt;br&gt;      {&lt;br&gt;        action:’xxx.action’&lt;br&gt;        name:’myfile’&lt;br&gt;      }&lt;br&gt;      );&lt;br&gt;  });&lt;/p&gt;
-&lt;h2 id=&quot;解析excel文件（POI的使用）&quot;&gt;&lt;a href=&quot;#解析excel文件（POI的使用）&quot; class=&quot;headerlink&quot; title=&quot;  解析excel文件（POI的使用）&quot;&gt;&lt;/a&gt;  解析excel文件（POI的使用）&lt;/h2&gt;&lt;p&gt;  对于小数据量可以用hssf在action中直接解析&lt;br&gt;  第一步：HSSFWorkbook&lt;br&gt;  第二步：Sheet&lt;br&gt;  第三步：Row&lt;br&gt;  第四步：Cell&lt;/p&gt;
+&lt;h2 id=&quot;解析excel文件（POI的使用）&quot;&gt;&lt;a href=&quot;#解析excel文件（POI的使用）&quot; class=&quot;headerlink&quot; title=&quot;  解析excel文件（POI的使用）&quot;&gt;&lt;/a&gt;  解析excel文件（POI的使用）&lt;/h2&gt;&lt;p&gt;  对于小数据量可以用hssf在action中直接解析&lt;br&gt;  第一步：HSSFWorkbook&lt;br&gt;  第二步：Sheet&lt;br&gt;  第三步：Row&lt;br&gt;  第四步：Cell&lt;br&gt;&lt;/pre&gt;&lt;/p&gt;
   &lt;pre&gt;
     HSSFWorkbook workbook=new HSSFWorkbook(new FileInputStream(myfile));
        HSSFSheet sheet=workbook.getSheetAt(0);
@@ -344,6 +403,8 @@ $.extend($.fn.validatebox.defaults.rules, {
        }
        regionService.insertBatch(list);
 &lt;/pre&gt;
+
+
 
 
 

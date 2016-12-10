@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/02/二期改造项目笔记/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/02/messx/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/02/二期改造项目笔记/" itemprop="url">
-                  二期改造项目1
+                <a class="post-title-link" href="/2016/12/02/messx/" itemprop="url">
+                  Mess x
                 </a>
               
             
@@ -345,7 +345,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T00:00:00+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T09:28:55+08:00">
                 2016-12-02
               </time>
             
@@ -364,8 +364,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
+                  <a href="/categories/Lifestyle/" itemprop="url" rel="index">
+                    <span itemprop="name">Lifestyle</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/02/二期改造项目笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/二期改造项目笔记/" itemprop="commentCount"></span>
+                <a href="/2016/12/02/messx/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/messx/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,222 +407,13 @@
 
       
         
-          <p>用pdesigner设计出t_user.pdm,导入数据库,向t_user中插入一条测试用户数据<br>insert into t_user(id,username,password) values(‘1’,’test’,md5(‘123’))<br>这个需要注意的是md5加密。在业务层进行判断时也要把页面传过来的密码进行md5加密和这个密码进行比较，这里我写了一个md5的工具类。代码如下：</p>
-<pre>public static String md5(String plainText) {
-        byte[] secretBytes = null;
-        try {
-            secretBytes = MessageDigest.getInstance("md5").digest(
-                    plainText.getBytes());
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("没有md5这个算法！");
-        }
-        String md5code = new BigInteger(1, secretBytes).toString(16);// 16进制数字
-        // 如果生成数字未满32位，需要前面补0
-        for (int i = 0; i < 32 - md5code.length(); i++) {
-            md5code = "0" + md5code;
-        }
-        return md5code;
-    }</pre>
-
-
-<pre><code>自定义一个登录拦截器
--------------------
-struts只能识别默认的拦截器栈
-        &lt;interceptors&gt;
-        &lt;!-- 注册拦截器 --&gt;
-        &lt;interceptor name=&quot;bosLoginInterceptor&quot; class=&quot;com.itheima.bos.web.interceptor.BOSLoginInterceptor&quot;&gt;
-            &lt;param name=&quot;excludeMethods&quot;&gt;login&lt;/param&gt;
-        &lt;/interceptor&gt;
-        &lt;!-- 拦截器栈 --&gt;
-        &lt;interceptor-stack name=&quot;mystack&quot;&gt;
-                &lt;interceptor-ref name=&quot;bosLoginInterceptor&quot;/&gt;
-                &lt;interceptor-ref name=&quot;defaultStack&quot;/&gt;
-        &lt;/interceptor-stack&gt;
-    &lt;/interceptors&gt;
-    &lt;default-interceptor-ref name=&quot;mystack&quot;/&gt;
-</code></pre><p>页面使用多个样式用空格隔开，例如<br>class=”txt01 easyui-validatebox”</p>
-<pre>
-var v = $("#editPasswordForm").form("validate");//对应表单中的所有输入框进行校验
-if(v){//表单校验通过
-                //判断两次输入是否一致
-                var v1 = $("#txtNewPass").val();
-                var v2 = $("#txtRePass").val();
-                if(v1 == v2){
-                    //输入一致，发送ajax请求，修改当前用户的密码
-                    var url = "${pageContext.request.contextPath}/userAction_editPassword.action";
-                    $.post(url,{"password":v1},function(data){
-                        if(data == '1'){
-                            //修改密码成功
-                            $.messager.alert("提示信息","密码修改成功！","info");
-                        }else{
-                            //修改失败
-                            $.messager.alert("提示信息","密码修改失败！","warning");
-                        }
-                        //关闭修改密码的窗口
-                        $("#editPwdWindow").window("close");
-                    });
-                }else{
-                    //输入不一致，提示用户输入不一致
-                    $.messager.alert("提示信息","两次输入密码不一致！","warning");
-                }
-            }
-</pre>
-在编写dao时遇到了命名查询语句，它就是在对象映射文件domain.hbm.xml中的一个query标签
-<pre>
-&ltquery name=""&gt
-sql语句
-&lt/query&gt
-</pre>
-hibernate模板并没有提供命名语句查询，
-<pre>
-Session session = this.getSession();// 从本地线程中获得session对象
-        // 使用命名查询语句获得一个查询对象
-        Query query = session.getNamedQuery(queryName);
-        // 为HQL语句中的？赋值
-        int i = 0;
-        for (Object arg : objects) {
-            query.setParameter(i++, arg);
-        }
-        query.executeUpdate();// 执行更新
-</pre>
-在action中直接使用提示信息不太合理，改进措施把这些信息放到国际化配置文件中（message.properties)
-ActionSupport类中提供了一个读取配置文件的方法getText("配置文件中的key")在struts.xml中注册这个配置文件的位置，
-<pre>&ltconstant name="struts.custom.i18n.resources" value="message"&gt</pre>
-
-<h2 id="struts提供的错误提示标签"><a href="#struts提供的错误提示标签" class="headerlink" title="struts提供的错误提示标签"></a>struts提供的错误提示标签</h2><pre>&ltfont color="red"&gt
-&lts:actionerror/&gt
-&lt/font&gt</pre>
-
-<h1 id="jQuery-EasyUI在页面使用的规则（具体配置查看API）"><a href="#jQuery-EasyUI在页面使用的规则（具体配置查看API）" class="headerlink" title="jQuery EasyUI在页面使用的规则（具体配置查看API）"></a>jQuery EasyUI在页面使用的规则（具体配置查看API）</h1><hr>
-<p>准备工作，在jsp页面中引入easyUI相关的资源文件</p>
-<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/default/easyui.css"/></p>
-<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/icon.css" /></p>
-<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script ></p>
-<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script ></p>
-<h2 id="layout页面布局"><a href="#layout页面布局" class="headerlink" title="layout页面布局"></a>layout页面布局</h2><p>这个布局容器,有五个区域:北、南、东、西和中心。 他中心地区面板是必需的（特别注意）,但是边缘地区面板是可选的。每一个边缘地区面板可以缩放的拖动其边境, 他们也可以通过点击其收缩触发.布局可以嵌套,从而用户可以建立复杂的布局,他想要的。</p>
-<p>使用规则（重要）<br>在要使用的块状元素中添加class=”easyui-layout”,使用div指定区域使用easyui提供的data-options=”region:’north’”北部区域<br>data-options=”region:’south’”南部区域<br>data-options=”region:’west’”西部区域<br>data-options=”region:’east’”东部区域<br>这时页面显示的效果并不好，要在北部区域和南部区域div加上style=”height：100px”指定高度<br>在西部和东部div加上style=”width：100px”指定高度 在div上加上title属性显示标题，自带折叠效果</p>
-<h2 id="accordion折叠面板"><a href="#accordion折叠面板" class="headerlink" title="accordion折叠面板"></a>accordion折叠面板</h2><p>使用规则（重要）<br>在区域div中加入折叠面板div添加属性class=”easyui-accordion”，添加属性data-options=”fit:true”，表示自动填充区域div，每一个子div就是一个面板，在div上添加title属性显示标题，通常放在西部区域里面。</p>
-<h2 id="tabs选项卡面板"><a href="#tabs选项卡面板" class="headerlink" title="tabs选项卡面板"></a>tabs选项卡面板</h2><p>使用规则（重要）<br>在中部区域加入选项卡面板div添加属性class=”easyui-tabs”，添加属性data-options=”fit:true”，表示自动填充区域div，在子div中，添加性data-options=”closable:true,iconCls:’icon-add’”表示这个div是可关闭的,面板的图标是添加，面板的图标可以到引入的icon.css中找到。</p>
-<h1 id="Ztree树形插件–jQuery插件"><a href="#Ztree树形插件–jQuery插件" class="headerlink" title="Ztree树形插件–jQuery插件"></a>Ztree树形插件–jQuery插件</h1><p>我已经在官网上下载ztree插件，里面包括api<br>在页面导入资源文件</p>
-<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/ztree/jquery.ztree.all-3.5.js"></script></p>
-<p><link rel="stylesheet" href="${pageContext.request.contextPath }/js/ztree/zTreeStyle.css" type="text/css"><br>使用规则（重要）<br>第一种方式：使用标准json数据构成ztree（了解)</p>
-<pre>
-&ltul id="ztree1" class="ztree"&gt&lt/ul&gt
-$(function(){
-                            //当页面加载完成后动态创建菜单
-                            var setting={};//设置标准的ztree属性
-                            //构造json数据
-                            var zNodes=[//每个json数据代表一个节点
-                                                    {
-                                                        name:'系统管理'
-                                                    },
-                                                    {
-                                                        name:'用户管理',children:[{name:'用户添加'},{name:'用户修改'}]
-                                                    },
-                                                    {
-                                                        name:'权限管理'
-                                                    }
-                                                    ];
-                                    //创建ztree
-                                $.fn.zTree.init(
-                                    $("#ztree1"),
-                                    setting,
-                                    zNodes
-                                );
-
-                        });
-</pre>
-
-<p>第二种方式：使用简单json数组数据构成ztree(推荐)<br>在实际开发中我们的节点数据一般来自于系统的业务数据,可以发送ajax请求找action要数据，然后赋给treeNodes</p>
-<pre>
-&ltul id="ztree2" class="ztree"&gt&lt/ul&gt
-$(function(){
-                                //当页面加载完成后动态创建菜单
-                                var setting = {
-                                        data: {
-                                            simpleData: {
-                                                enable: true,//启用简单数组数据
-                                                idKey: "id",
-                                                pIdKey: "pId",
-                                                rootPId: 0
-                                            }
-                                        }
-                                    };
-                                    var treeNodes = [
-                                        {"id":1, "pId":0, "name":"test1"},
-                                        {"id":11, "pId":1, "name":"test11"},
-                                        {"id":12, "pId":1, "name":"test12"},
-                                        {"id":111, "pId":11, "name":"test111"}
-                                    ];
-                                    //创建ztree
-                                    $.fn.zTree.init(
-                                        $("#ztree2"),
-                                        setting,
-                                        treeNodes
-                                    );
-                            });
-
-</pre>
-
-
-
-
-<h2 id="给ztree绑定点击事件"><a href="#给ztree绑定点击事件" class="headerlink" title="给ztree绑定点击事件"></a>给ztree绑定点击事件</h2><pre>
-<code>
-function zTreeOnClick(event, treeId, treeNode) {
-    var page=treeNode.page;
-                    if(page!=undefined){//需要打开选项卡
-                                     //判断当前选项卡是否已经打开
-
-                                    var isExists= $("#tt").tabs("exists",treeNode.name);
-
-                                 if(isExists){
-                                     $("#tt").tabs("select",treeNode.name);
-                                 }else{
-                                     $("#tt").tabs("add",
-                                                {
-                                                 title: treeNode.name,
-                                                content: '&ltiframe src="'+page+'" width="100%" frameborder="0" height="100%"&gt&lt/iframe&gt',
-                                                closable: true,
-                                             iconCls: 'icon-search'
-                                                }  
-                                            );
-                                    }
-                                 }
-};
-var setting = {
-    callback: {
-        onClick: zTreeOnClick
-    }
-};
-</code>
-</pre>
-
-
-<h1 id="jQuery-EasyUI消息提示控件"><a href="#jQuery-EasyUI消息提示控件" class="headerlink" title="jQuery EasyUI消息提示控件"></a>jQuery EasyUI消息提示控件</h1><p>默认的提示框上面的按钮显示为ok，要想显示为中文，需要引入easyui下面locale下面的<br>easyui-lang-zh_CN.js</p>
-<h2 id="alert方法-消息提示框"><a href="#alert方法-消息提示框" class="headerlink" title="alert方法,消息提示框"></a>alert方法,消息提示框</h2><p>$.messager.alert(“标题”,”内容信息”,”question/error/info/warning”);</p>
-<h2 id="show方法-页面右下角出来提示信息"><a href="#show方法-页面右下角出来提示信息" class="headerlink" title="show方法,页面右下角出来提示信息"></a>show方法,页面右下角出来提示信息</h2><pre><code>window.setTimeout(function(){
-            $.messager.show({
-                title:&apos;欢迎信息&apos;,
-                msg:&apos;欢迎张三登录系统&apos;,
-                timeout:3000,
-                showType:&apos;slide&apos;
-            });
-        }, 3000);
-</code></pre><h2 id="confirm方法-确认框-如果点击确定，r的值为true"><a href="#confirm方法-确认框-如果点击确定，r的值为true" class="headerlink" title="confirm方法,确认框,如果点击确定，r的值为true"></a>confirm方法,确认框,如果点击确定，r的值为true</h2><pre><code>$.messager.confirm(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
-                        alert(r);
-                    });
-</code></pre><h2 id="prompt方法，跟confirm的作用差不多"><a href="#prompt方法，跟confirm的作用差不多" class="headerlink" title="prompt方法，跟confirm的作用差不多"></a>prompt方法，跟confirm的作用差不多</h2><pre><code>$.messager.prompt(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
-                                    alert(r);
-                                });
-</code></pre><h2 id="progress方法，进度条"><a href="#progress方法，进度条" class="headerlink" title="progress方法，进度条"></a>progress方法，进度条</h2><p>//打开进度条<br>$.messager.progress();<br>//关闭进度条<br>$.messager.progress(‘close’);<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/02/二期改造项目笔记/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <img src="/images/wtps.jpg" width="380" height="480">
+<p><pre><br>This is a time-honored tradition for some people to catch up with sth blindly</pre><br><img src="/images/title.png" width="200" height="10"><br><img src="/images/thumb_001.jpg" width="110" height="200"><img src="/images/thumb_005.jpg" width="110" height="200"><img src="/images/thumb_006.jpg" width="110" height="200"><img src="/images/thumb_010.jpg" width="110" height="200"><img src="/images/thumb_011.jpg" width="110" height="200"></p>
+<p>//TODO</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/design.mp3">
+</iframe>
+          
         
       
     </div>
@@ -654,7 +445,7 @@ var setting = {
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -695,7 +486,7 @@ var setting = {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -712,7 +503,7 @@ var setting = {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

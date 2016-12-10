@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="极客, 军人,生活,学习,运动" />
+  <meta name="keywords" content="权限," />
 
 
 
@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="WELCOME TO MY TINY WORKSPACE">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Debug Genie">
-<meta property="og:url" content="http://burinicc.cn/categories/military/index.html">
+<meta name="description" content="1、权限概述（认证、授权）2、权限控制方式(URL拦截权限控制、方法注释权限控制)3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）4、shiro框架
+权限概述每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。授权：赋予用户访问某一功能的权利。
+权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="权限管理">
+<meta property="og:url" content="http://burinicc.cn/2016/12/09/权限管理/index.html">
 <meta property="og:site_name" content="Debug Genie">
-<meta property="og:description" content="WELCOME TO MY TINY WORKSPACE">
+<meta property="og:description" content="1、权限概述（认证、授权）2、权限控制方式(URL拦截权限控制、方法注释权限控制)3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）4、shiro框架
+权限概述每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。授权：赋予用户访问某一功能的权利。
+权">
+<meta property="og:updated_time" content="2016-12-10T01:08:34.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Debug Genie">
-<meta name="twitter:description" content="WELCOME TO MY TINY WORKSPACE">
+<meta name="twitter:title" content="权限管理">
+<meta name="twitter:description" content="1、权限概述（认证、授权）2、权限控制方式(URL拦截权限控制、方法注释权限控制)3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）4、shiro框架
+权限概述每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。授权：赋予用户访问某一功能的权利。
+权">
 
 
 
@@ -122,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://burinicc.cn/categories/military/"/>
+  <link rel="canonical" href="http://burinicc.cn/2016/12/09/权限管理/"/>
 
 
 
 
 
-  <title> Category: military | Debug Genie </title>
+  <title> 权限管理 | Debug Genie </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -149,7 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,47 +300,198 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        military
-        <small>Category</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/01/朱日和介绍/" itemprop="url">
-              
-                <span itemprop="name">神秘的“朱日和”</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-01T18:04:37+08:00"
-              content="2016-12-01" >
-          12-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/09/权限管理/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burini">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/gy.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="/images/avatar.png">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                权限管理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T17:30:43+08:00">
+                2016-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/09/权限管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/权限管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1、权限概述（认证、授权）<br>2、权限控制方式(URL拦截权限控制、方法注释权限控制)<br>3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）<br>4、shiro框架</p>
+<h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。<br>认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。<br>授权：赋予用户访问某一功能的权利。</p>
+<h2 id="权限控制方式"><a href="#权限控制方式" class="headerlink" title="权限控制方式"></a>权限控制方式</h2><p>不论用户是点击菜单还是直接在客户端输入http地址，都是发出http请求。<br>第一类：可以通过过滤器或者拦截器对http请求进行校验，如果该用户有权限访问，则放行；如果没有，则不放行。这是基于url拦截的方式进行权限控制。<br>第二类：当在action方法加上注解后，用户访问action为当前action的代理对象，当检验权限通过后，通过反射调用目标权限的方法；这是基于代理方式进行权限控制。</p>
+<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>例子：登录淘宝后不用再登录天猫<br>CAS<br>application code 开发人员写的应用程序代码<br>subject 当前用户（广义）<br>SecurityManager 安全管理器shiro框架的核心类<br>realm 类似于Dao，负责访问安全数据（用户数据、角色数据、权限数据)</p>
+<h1 id="shiro使用"><a href="#shiro使用" class="headerlink" title="shiro使用"></a>shiro使用</h1><p>第一步：导入jar包<br>第二步：在web.xml配置spring整合shrio的过滤器<br>第三步：在spring文件中配置一个工厂bean为了创建shiro框架用到的过滤器<br>第四步：注册安全管理器，为安全管理器注入realm<br>第五步：注册realm</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>大爷奶奶，可怜可怜吧</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipayCode.png" alt="burini Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/权限/" rel="tag"># 权限</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/08/apache-poi-使用中文说明书/" rel="next" title="apache poi 使用中文说明书">
+                <i class="fa fa-chevron-left"></i> apache poi 使用中文说明书
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -341,6 +499,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/09/权限管理/"
+           data-title="权限管理" data-url="http://burinicc.cn/2016/12/09/权限管理/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -360,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/gy.jpg"
@@ -441,6 +616,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#权限概述"><span class="nav-number">1.</span> <span class="nav-text">权限概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限控制方式"><span class="nav-number">2.</span> <span class="nav-text">权限控制方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单点登录"><span class="nav-number">3.</span> <span class="nav-text">单点登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shiro使用"><span class="nav-number"></span> <span class="nav-text">shiro使用</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -536,6 +727,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
