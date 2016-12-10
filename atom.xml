@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://burinicc.cn/"/>
-  <updated>2016-12-10T02:57:21.339Z</updated>
+  <updated>2016-12-10T03:02:34.857Z</updated>
   <id>http://burinicc.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://burinicc.cn/2016/12/09/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
     <id>http://burinicc.cn/2016/12/09/权限管理/</id>
     <published>2016-12-09T09:30:43.000Z</published>
-    <updated>2016-12-10T02:57:21.339Z</updated>
+    <updated>2016-12-10T03:02:34.857Z</updated>
     
     <content type="html"><![CDATA[<p>1、权限概述（认证、授权）<br>2、权限控制方式(URL拦截权限控制、方法注释权限控制)<br>3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）<br>4、shiro框架</p>
 <h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。<br>认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。<br>授权：赋予用户访问某一功能的权利。</p>
@@ -28,7 +28,6 @@
 <h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>例子：登录淘宝后不用再登录天猫<br>CAS<br>application code 开发人员写的应用程序代码<br>subject 当前用户（广义）<br>SecurityManager 安全管理器shiro框架的核心类<br>realm 类似于Dao，负责访问安全数据（用户数据、角色数据、权限数据)</p>
 <h1 id="shiro使用"><a href="#shiro使用" class="headerlink" title="shiro使用"></a>shiro使用</h1><p>第一步：导入jar包<br>第二步：在web.xml配置spring整合shrio的过滤器<br>第三步：在spring文件中配置一个工厂bean为了创建shiro框架用到的过滤器<br>第四步：注册安全管理器，为安全管理器注入realm<br>第五步：注册realm</p>
 <h2 id="shiro提供的权限控制方式："><a href="#shiro提供的权限控制方式：" class="headerlink" title="shiro提供的权限控制方式："></a>shiro提供的权限控制方式：</h2><p>URL拦截方式、方法注释、页面标签</p>
-<iframe width="560" height="150" src="https://www.youtube.com/embed/qpaC4QuVKMk" frameborder="0" allowfullscreen></iframe>
 ]]></content>
     
     <summary type="html">
@@ -428,18 +427,19 @@ List rows=this.getHibernateTemplate().findByCriteria(detachedCriteria,pageStart,
     <link href="http://burinicc.cn/2016/12/02/messx/"/>
     <id>http://burinicc.cn/2016/12/02/messx/</id>
     <published>2016-12-02T01:28:55.000Z</published>
-    <updated>2016-12-09T03:28:52.232Z</updated>
+    <updated>2016-12-10T03:06:17.835Z</updated>
     
-    <content type="html"><![CDATA[<img src="/images/wtps.jpg" width="380" height="480">
-<p><pre><br>This is a time-honored tradition for some people to catch up with sth blindly</pre><br><img src="/images/title.png" width="200" height="10"><br><img src="/images/thumb_001.jpg" width="110" height="200"><img src="/images/thumb_005.jpg" width="110" height="200"><img src="/images/thumb_006.jpg" width="110" height="200"><img src="/images/thumb_010.jpg" width="110" height="200"><img src="/images/thumb_011.jpg" width="110" height="200"></p>
+    <content type="html"><![CDATA[<p></p><h1><br>This is a time-honored tradition for MOST of us to catch up with sth blindly</h1><p></p>
+<iframe width="380" height="280" src="https://www.youtube.com/embed/qpaC4QuVKMk" frameborder="0"></iframe>
+
+<img src="/images/title.png" width="200" height="10">
 <p>//TODO</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/design.mp3">
-</iframe>]]></content>
+]]></content>
     
     <summary type="html">
     
-      &lt;img src=&quot;/images/wtps.jpg&quot; width=&quot;380&quot; height=&quot;480&quot;&gt;
-&lt;p&gt;&lt;pre&gt;&lt;br&gt;This is a time-honored tradition for some people to catch up with sth blin
+      &lt;p&gt;&lt;/p&gt;&lt;h1&gt;&lt;br&gt;This is a time-honored tradition for MOST of us to catch up with sth blindly&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;
+&lt;iframe width=&quot;380&quot; height=&quot;280&quot; src
     
     </summary>
     
@@ -1053,21 +1053,21 @@ select areainfo.areaname,nvl(business.cgje,0)cgje from
   </entry>
   
   <entry>
-    <title>爱情</title>
-    <link href="http://burinicc.cn/2016/12/01/%E6%84%9F%E6%83%85%E6%80%9D%E8%80%83/"/>
-    <id>http://burinicc.cn/2016/12/01/感情思考/</id>
-    <published>2016-12-01T08:24:51.000Z</published>
-    <updated>2016-12-08T13:42:06.776Z</updated>
+    <title>有一天遇到喜欢也喜欢我的人会摇身变成白马王子</title>
+    <link href="http://burinicc.cn/2016/12/01/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/"/>
+    <id>http://burinicc.cn/2016/12/01/生活琐事/</id>
+    <published>2016-12-01T08:24:51.759Z</published>
+    <updated>2016-12-10T03:29:04.748Z</updated>
     
     <content type="html"><![CDATA[<img src="/images/avatar.png" width="380" height="438">
-<p>  如果有一天我遇到我喜欢也喜欢我的女孩子，我会摇身变成白马王子。<br>  2016-12-8<br>  比我大三岁的老表今天也要结束单身贵族的生活，结婚了！真心的祝福他，可是我不想去参加他的婚礼，因为我跟他比较起来，我是那么的可怜，可怜的我把头插到脸盆里大哭一场，这样就不会看到眼泪了。</p>
+<p>  2016-12-8<br>  比我大三岁的老表今天也要结束单身贵族的生活，结婚了！真心的祝福他，可是我不想去参加他的婚礼，因为我跟他比较起来，我是那么的可怜，可怜的我把头插到脸盆里大哭一场，这样就不会看到眼泪了。然后找喜欢的女孩子聊了会天，感觉好点了，哎，可悲的我竟然连自己的感情都无法控制。我看这辈子是完了。<br>  2016-12-10<br>  【我工作就是为了钱，如果你不给钱我一定不会来；如果暂时拿不到，我希望在将来拿到更多。】凭什么一个公司有底气嘲讽询问薪资的潜在员工。互相尊重这种事情都做不到，什么公司会找去当HR，我能想到的只有国企了，而且，环境总在引导我去认为「国企的工作在道德上是无限正义的」。放屁。如果我的工作要求我吃苦耐劳，我应该是要想一下是不是自己有点太差了，或许不知不觉就混到了自己都看不下去的程度。然后可能就是考虑再就业的问题了把~</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="438" height="86" src="/music/moodsblack.mp3">
 </iframe>]]></content>
     
     <summary type="html">
     
       &lt;img src=&quot;/images/avatar.png&quot; width=&quot;380&quot; height=&quot;438&quot;&gt;
-&lt;p&gt;  如果有一天我遇到我喜欢也喜欢我的女孩子，我会摇身变成白马王子。&lt;br&gt;  2016-12-8&lt;br&gt;  比我大三岁的老表今天也要结束单身贵族的生活，结婚了！真
+&lt;p&gt;  2016-12-8&lt;br&gt;  比我大三岁的老表今天也要结束单身贵族的生活，结婚了！真心的祝福他，可是我不想去参加他的婚礼，因为我跟他比较起来，我是那么的可怜，
     
     </summary>
     
