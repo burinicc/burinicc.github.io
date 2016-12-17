@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/08/apache-poi-使用中文说明书/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/09/权限管理/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/08/apache-poi-使用中文说明书/" itemprop="url">
-                  apache poi 使用中文说明书
+                <a class="post-title-link" href="/2016/12/09/权限管理/" itemprop="url">
+                  权限管理
                 </a>
               
             
@@ -345,8 +345,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T10:55:43+08:00">
-                2016-12-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T17:30:43+08:00">
+                2016-12-09
               </time>
             
 
@@ -379,8 +379,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/08/apache-poi-使用中文说明书/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/apache-poi-使用中文说明书/" itemprop="commentCount"></span>
+                <a href="/2016/12/09/权限管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/权限管理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,77 +407,15 @@
 
       
         
-          <p>HSSF is the POI Project’s pure Java implementation of the Excel ‘97(-2007) file format. XSSF is the POI Project’s pure Java implementation of the Excel 2007 OOXML (.xlsx) file format.</p>
-<p>HSSF and XSSF provides ways to read spreadsheets create, modify, read and write XLS spreadsheets. They provide:</p>
-<pre><code>low level structures for those with special needs
-an eventmodel api for efficient read-only access
-a full usermodel api for creating, reading and modifying XLS files
-</code></pre><p>XSSF导出 excel<br>1.导入jar包</p>
-<p>2.拷贝工具类ExcelExportSXXSSF</p>
-<p>XSSF操作03以上版本（07版本）excel，扩展名.xlsx，工作表行数没有限制<br>3.配置虚拟目录<br>在host标签中配置如下：</p>
-<p><Context path="/vir/" docBase="d:/upload/" reloadable="true" /><br>这样在浏览上输入：<br><a href="http://ip地址：端口号/vir/">http://ip地址：端口号/vir/</a><br>就可以访问d:/upload/目录下的文件了！servlet中可以使用如下代码得到webpath<br>/**            导出文件存放物理路径</p>
-<pre><code> * @param fileWebPath
- *            导出文件web下载路径
- * @param filePrefix
- *            导出文件名的前缀          
- * @param flushRows
- *            存放在内存的数据量
- * @param fieldNames
- *            导出文件列标题
- * @param fieldCodes
- *               导出数据对象的字段名称     
- * @param flushRows*/
-//导出文件存放的路径，并且是虚拟目录指向的路径
-String filePath = &quot;d:/upload/&quot;;
-//导出文件的前缀
-String filePrefix=&quot;studentinfo&quot;;
-//-1表示关闭自动刷新，手动控制写磁盘的时机，其它数据表示多少数据在内存保存，超过的则写入磁盘
-int flushRows=100;
+          
+            <p>1、权限概述（认证、授权）<br>2、权限控制方式(URL拦截权限控制、方法注释权限控制)<br>3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）<br>4、shiro框架</p>
+<h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。<br>认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。<br>授权：赋予用户访问某一功能的权利。</p>
+<h2 id="权限控制方式"><a href="#权限控制方式" class="headerlink" title="权限控制方式"></a>权限控制方式</h2><p>不论用户是点击菜单还是直接在客户端输入http地址，都是发出http请求。<br>第一类：可以通过过滤器或者拦截器对http请求进行校验，如果该用户有权限访问，则放行；如果没有，则不放行。这是基于url拦截的方式进行权限控制。<br>第二类：当在action方法加上注解后，用户访问action为当前action的代理对象，当检验权限通过后，通过反射调用目标权限的方法；这是基于代理方式进行权限控制。</p>
+<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>例子：登录淘宝后不用再登录天猫<br>CAS<br>application code 开发人员写的应用程序代码<br>subject 当前用户（广义）<br>SecurityManager 安全管理器shiro框架的核心类<br>realm 类似于Dao，负责访问安全数据（用户数据、角色数据、权限数据)</p>
+<h1 id="shiro使用"><a href="#shiro使用" class="headerlink" title="shiro使用"></a>shiro使用</h1><p>第一步：导入jar包<br>第二步：在web.xml配置spring整合shrio的过滤器<br>第三步：在spring文件中配置一个工厂bean为了创建shiro框架用到的过滤器<br>第四步：注册安全管理器，为安全管理器注入realm<br>第五步：注册realm</p>
+<h2 id="shiro提供的权限控制方式："><a href="#shiro提供的权限控制方式：" class="headerlink" title="shiro提供的权限控制方式："></a>shiro提供的权限控制方式：</h2><p>URL拦截方式、方法注释、页面标签<br>方法注解只能强制使用cglib动态代理，因为基于action接口的jdk动态代理对我们意义不大。</p>
 
-//定义导出数据的title
-List&lt;String&gt; fieldNames=new ArrayList&lt;String&gt;();
-fieldNames.add(&quot;性别&quot;);
-fieldNames.add(&quot;年龄&quot;);
-fieldNames.add(&quot;姓名&quot;);
-fieldNames.add(&quot;爱好&quot;);
-
-//告诉导出类数据list中对象的属性，让ExcelExportSXXSSF通过反射获取对象的值
-List&lt;String&gt; fieldCodes=new ArrayList&lt;String&gt;();
-fieldCodes.add(&quot;gender&quot;);//药品流水号
-fieldCodes.add(&quot;age&quot;);//通用名
-fieldCodes.add(&quot;name&quot;);//价格
-fieldCodes.add(&quot;hobbies&quot;);
-
-
-
-//注意：fieldCodes和fieldNames个数必须相同且属性和title顺序一一对应，这样title和内容才一一对应
-
-
-//开始导出，执行一些workbook及sheet等对象的初始创建
-ExcelExportSXXSSF excelExportSXXSSF = ExcelExportSXXSSF.start(filePath, &quot;/vir&quot;, filePrefix, fieldNames, fieldCodes, flushRows);
-
-//准备导出的数据，将数据存入list，且list中对象的字段名称必须是刚才传入ExcelExportSXXSSF的名称
-List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
-
-list.add(new Student(&quot;男&quot;, 23, &quot;张三&quot;, &quot;乒乓球,羽毛球&quot;));
-list.add(new Student(&quot;男&quot;, 24, &quot;李四&quot;, &quot;篮球,羽毛球&quot;));
-list.add(new Student(&quot;女&quot;, 25, &quot;小红&quot;, &quot;高尔夫,羽毛球&quot;));
-list.add(new Student(&quot;男&quot;, 23, &quot;小刘&quot;, &quot;乒乓球,羽毛球&quot;));
-
-//执行导出
-excelExportSXXSSF.writeDatasByObject(list);
-//输出文件，返回下载文件的http地址
-String webpath = excelExportSXXSSF.exportFile();
-
-System.out.println(webpath);
-</code></pre>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/08/apache-poi-使用中文说明书/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -509,7 +447,7 @@ System.out.println(webpath);
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -550,7 +488,7 @@ System.out.println(webpath);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

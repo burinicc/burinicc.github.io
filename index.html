@@ -305,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/09/权限管理/">
+  <link itemprop="mainEntityOfPage" href="http://burinicc.cn/2016/12/12/activiti工作流框架/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="burini">
@@ -330,8 +330,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/09/权限管理/" itemprop="url">
-                  权限管理
+                <a class="post-title-link" href="/2016/12/12/activiti工作流框架/" itemprop="url">
+                  activiti工作流框架
                 </a>
               
             
@@ -345,8 +345,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T17:30:43+08:00">
-                2016-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T16:25:28+08:00">
+                2016-12-12
               </time>
             
 
@@ -356,31 +356,13 @@
           </span>
 
           
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/09/权限管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/权限管理/" itemprop="commentCount"></span>
+                <a href="/2016/12/12/activiti工作流框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/activiti工作流框架/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,12 +390,11 @@
       
         
           
-            <p>1、权限概述（认证、授权）<br>2、权限控制方式(URL拦截权限控制、方法注释权限控制)<br>3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）<br>4、shiro框架</p>
-<h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。<br>认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。<br>授权：赋予用户访问某一功能的权利。</p>
-<h2 id="权限控制方式"><a href="#权限控制方式" class="headerlink" title="权限控制方式"></a>权限控制方式</h2><p>不论用户是点击菜单还是直接在客户端输入http地址，都是发出http请求。<br>第一类：可以通过过滤器或者拦截器对http请求进行校验，如果该用户有权限访问，则放行；如果没有，则不放行。这是基于url拦截的方式进行权限控制。<br>第二类：当在action方法加上注解后，用户访问action为当前action的代理对象，当检验权限通过后，通过反射调用目标权限的方法；这是基于代理方式进行权限控制。</p>
-<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>例子：登录淘宝后不用再登录天猫<br>CAS<br>application code 开发人员写的应用程序代码<br>subject 当前用户（广义）<br>SecurityManager 安全管理器shiro框架的核心类<br>realm 类似于Dao，负责访问安全数据（用户数据、角色数据、权限数据)</p>
-<h1 id="shiro使用"><a href="#shiro使用" class="headerlink" title="shiro使用"></a>shiro使用</h1><p>第一步：导入jar包<br>第二步：在web.xml配置spring整合shrio的过滤器<br>第三步：在spring文件中配置一个工厂bean为了创建shiro框架用到的过滤器<br>第四步：注册安全管理器，为安全管理器注入realm<br>第五步：注册realm</p>
-<h2 id="shiro提供的权限控制方式："><a href="#shiro提供的权限控制方式：" class="headerlink" title="shiro提供的权限控制方式："></a>shiro提供的权限控制方式：</h2><p>URL拦截方式、方法注释、页面标签<br>方法注解只能强制使用cglib动态代理，因为基于action接口的jdk动态代理对我们意义不大。</p>
+            <p>工作流：<br>用计算机技术实现业务过程的自动化，根据我们预先定义的规则解决多个参与者协同完成业务流程的技术。<br>activiti目录结构<br>bin下没有文件，database下有三个子文件夹create、drop、upgrade，里面存放不同的是脚本文件。其中upgrade是activiti由低版本升级高版本所对应的sql脚本。docs里面存放的是api等文件。<br>activiti工作流5.13<br>是依赖数据库（23张）来支持，使用mybatis操作数据库。他的前身是JBPM使用hibernate来操作数据库。<br>BPMN2.0<br>我们用来定义流程的文件名后缀。<br>使用工作流第一步：<br>根据create下的sql脚本创建数据库表（建议）、还可以使用api建表<br>所有的表都是由act开头，第二部分表示表的用途标识，其用途也和对应的API相同.<br>re<em>*: ‘re’代表repository，包含流程定义和流程静态资源（图片，规则等）<br>ru</em><em>:<br>‘runtime’,包含流程实例、任务、变量、异步任务等运行时的数据。Aciviti只在流程实例执行过程时保存这些数据，当流程结束后就会删除这些数据。<br>id_</em>:<br>‘identity’,包含用户身份信息，用户和组等。<br>hi<em>*:<br>‘history’,包含历史数据，比如历史流程实例、变量、任务。<br>ge</em>*:<br>‘generation’:通用数据，用在不同的场景下。</p>
+<h1 id="使用API"><a href="#使用API" class="headerlink" title="使用API"></a>使用API</h1><p>1、设计流程定义BPMN2<br>2、部署流程定义，保存到数据库<br>getRepositoryService<br>两种方式：加载单个流程定义文件、加载压缩的zip流程定义文件<br>3、创建流程实例，<br>getRuntimeService<br>4、查看个人任务、办理个人任务<br>getTaskService<br>5、设置流程变量（4种方式）<br>开启流程时设置流程变量<br>startProcessInstanceByKey(“pylc”, variables);<br>办理任务时设置流程变量<br>processEngine.getTaskService().complete(taskid, variables);<br>RuntimeService的set方法<br>processEngine.getRuntimeService().setVariables(executionid, variables);<br>TaskService的set方法<br>processEngine.getTaskService().setVariables(taskid, variables);<br>注意：设置自定义对象，应实现Serializable接口<br>6、获取流程变量（3种方式）<br>RuntimeService的get方法<br>TaskService的get方法<br>使用框架提供的表单式获取，例如${activeUser}</p>
+<h1 id="组任务"><a href="#组任务" class="headerlink" title="组任务"></a>组任务</h1><p>多个参与者都可以构成一个组，这个组对应的是角色，组里的每个成员都可以拾取组任务，变成个人任务。</p>
+<h1 id="业务主键"><a href="#业务主键" class="headerlink" title="业务主键"></a>业务主键</h1><p>businesskey在启动流程时设置，通常是业务表的主键，当在办理任务时，可以通过业务主键来关联业务表，获取业务信息。</p>
+<h1 id="排他网关"><a href="#排他网关" class="headerlink" title="排他网关"></a>排他网关</h1><p>流程走到某一步时，出现分支，通过我们设置的流程变量，在流程定义中在每个分支上的设置条件来判断流程该往哪一步执行，只能执行其中一条分支。</p>
 
           
         
@@ -447,7 +428,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -488,7 +469,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

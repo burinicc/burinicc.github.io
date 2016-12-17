@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://burinicc.cn/"/>
-  <updated>2016-12-10T11:18:50.475Z</updated>
+  <updated>2016-12-14T11:29:19.105Z</updated>
   <id>http://burinicc.cn/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>activiti工作流框架</title>
+    <link href="http://burinicc.cn/2016/12/12/activiti%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%A1%86%E6%9E%B6/"/>
+    <id>http://burinicc.cn/2016/12/12/activiti工作流框架/</id>
+    <published>2016-12-12T08:25:28.000Z</published>
+    <updated>2016-12-14T11:29:19.105Z</updated>
+    
+    <content type="html"><![CDATA[<p>工作流：<br>用计算机技术实现业务过程的自动化，根据我们预先定义的规则解决多个参与者协同完成业务流程的技术。<br>activiti目录结构<br>bin下没有文件，database下有三个子文件夹create、drop、upgrade，里面存放不同的是脚本文件。其中upgrade是activiti由低版本升级高版本所对应的sql脚本。docs里面存放的是api等文件。<br>activiti工作流5.13<br>是依赖数据库（23张）来支持，使用mybatis操作数据库。他的前身是JBPM使用hibernate来操作数据库。<br>BPMN2.0<br>我们用来定义流程的文件名后缀。<br>使用工作流第一步：<br>根据create下的sql脚本创建数据库表（建议）、还可以使用api建表<br>所有的表都是由act开头，第二部分表示表的用途标识，其用途也和对应的API相同.<br>re<em>*: ‘re’代表repository，包含流程定义和流程静态资源（图片，规则等）<br>ru</em><em>:<br>‘runtime’,包含流程实例、任务、变量、异步任务等运行时的数据。Aciviti只在流程实例执行过程时保存这些数据，当流程结束后就会删除这些数据。<br>id_</em>:<br>‘identity’,包含用户身份信息，用户和组等。<br>hi<em>*:<br>‘history’,包含历史数据，比如历史流程实例、变量、任务。<br>ge</em>*:<br>‘generation’:通用数据，用在不同的场景下。</p>
+<h1 id="使用API"><a href="#使用API" class="headerlink" title="使用API"></a>使用API</h1><p>1、设计流程定义BPMN2<br>2、部署流程定义，保存到数据库<br>getRepositoryService<br>两种方式：加载单个流程定义文件、加载压缩的zip流程定义文件<br>3、创建流程实例，<br>getRuntimeService<br>4、查看个人任务、办理个人任务<br>getTaskService<br>5、设置流程变量（4种方式）<br>开启流程时设置流程变量<br>startProcessInstanceByKey(“pylc”, variables);<br>办理任务时设置流程变量<br>processEngine.getTaskService().complete(taskid, variables);<br>RuntimeService的set方法<br>processEngine.getRuntimeService().setVariables(executionid, variables);<br>TaskService的set方法<br>processEngine.getTaskService().setVariables(taskid, variables);<br>注意：设置自定义对象，应实现Serializable接口<br>6、获取流程变量（3种方式）<br>RuntimeService的get方法<br>TaskService的get方法<br>使用框架提供的表单式获取，例如${activeUser}</p>
+<h1 id="组任务"><a href="#组任务" class="headerlink" title="组任务"></a>组任务</h1><p>多个参与者都可以构成一个组，这个组对应的是角色，组里的每个成员都可以拾取组任务，变成个人任务。</p>
+<h1 id="业务主键"><a href="#业务主键" class="headerlink" title="业务主键"></a>业务主键</h1><p>businesskey在启动流程时设置，通常是业务表的主键，当在办理任务时，可以通过业务主键来关联业务表，获取业务信息。</p>
+<h1 id="排他网关"><a href="#排他网关" class="headerlink" title="排他网关"></a>排他网关</h1><p>流程走到某一步时，出现分支，通过我们设置的流程变量，在流程定义中在每个分支上的设置条件来判断流程该往哪一步执行，只能执行其中一条分支。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工作流：&lt;br&gt;用计算机技术实现业务过程的自动化，根据我们预先定义的规则解决多个参与者协同完成业务流程的技术。&lt;br&gt;activiti目录结构&lt;br&gt;bin下没有文件，database下有三个子文件夹create、drop、upgrade，里面存放不同的是脚本文件。其中up
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>权限管理</title>
